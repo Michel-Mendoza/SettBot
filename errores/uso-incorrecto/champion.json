@@ -1,0 +1,18 @@
+{
+    "content": null,
+    "embed": 
+      {
+        "title": "Me falta información para poder completar la solicitud.",
+        "description": "El uso correcto del comando es ```s.champion <campeón>```\nRecuerda que debes escribir el nombre del campeón sin espacios o comillas:\n```Leesin, Tahmkench, Twistedfate, Kaisa, Kogmaw...```",
+        "color": null,
+        "author": {
+          "name": "¡Faltan argumentos!"
+        },
+        "footer": {
+          "text": "Usa s.help para obtener una lista de comandos."
+        },
+        "thumbnail": {
+          "url": "https://media.discordapp.net/attachments/811691705551683637/818383014622134302/256.png"
+        }
+      }
+  }
