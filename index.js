@@ -10,7 +10,8 @@ for (const file of events) {
 		client.once(event.name, (...args) => event.execute(...args, client));
 	} else {
 		client.on(event.name, (...args) => event.execute(...args, client));
-	}
+	};
 };
 
-client.login(process.env.TOKEN)
+const token = process.env.TOKEN
+client.login(token)
