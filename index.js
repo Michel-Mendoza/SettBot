@@ -13,4 +13,4 @@ for (const file of events) {
 	}
 };
 
-client.login('Nzk3NzgwNjMyMjA1NjU2MDg0.X_rdHA.4UgwVoubZXdLqvq2mBHEBqbTop0')
+client.login(process.env.TOKEN)
