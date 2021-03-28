@@ -35,8 +35,8 @@ module.exports = {
         let lastGameData = lastGame.get(region, (await summonerData).accountId);
         let last10GamesData = last10GamesWL.get(region, (await summonerData).accountId);
 
-        const Discord = require('discord.js');
-        const embed = new Discord.MessageEmbed();
+        const dc = require('discord.js');
+        const embed = new dc.MessageEmbed();
         embed.setTitle('Esto es lo que he encontrado:');
         embed.setAuthor(`Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
@@ -47,7 +47,7 @@ module.exports = {
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
         embed.setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL());
-        embed.setTimestamp()
+        embed.setTimestamp(new Date());
 
         (await msg).edit(embed);
     }
