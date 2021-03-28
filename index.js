@@ -14,4 +14,4 @@ for (const file of events) {
 };
 
 const token = process.env.TOKEN
-client.login(token)
+client.login(token);
