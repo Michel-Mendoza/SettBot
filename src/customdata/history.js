@@ -124,5 +124,5 @@ module.exports.get = async function(region, accountId, startIndex) {
         cola: cola5,
         champ: champ5.name
       }
-    };console.log(historyData); return historyData
+    }; return historyData
 }
