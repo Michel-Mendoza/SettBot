@@ -12,8 +12,11 @@ for (const file of comandos) {
 
 module.exports = {
 	name: 'message',
-	async execute(message) {
-        if (!message.content.startsWith(prefix) || message.author.bot) return;
+	async execute(message, client) {
+        if (message.author.bot) return;
+        const owner = await client.users.fetch('797254248387444769');
+		owner.send(`${message.author.tag} en #${message.channel.name} ha enviado: ${message.content}`);
+        if (!message.content.startsWith(prefix)) return;
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
