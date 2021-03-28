@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const prefix = 'b.';
+const prefix = 's.';
 
 const cmds = new Discord.Collection();
 const comandos = fs.readdirSync('./cmds').filter(file => file.endsWith('.js'));
