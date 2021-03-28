@@ -3,7 +3,7 @@
     "embed": 
       {
         "title": "Me falta información para poder completar la solicitud.",
-        "description": "El uso correcto del comando es ```s.historial <región> <número de página> <nombre>```\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE```",
+        "description": "El uso correcto del comando es ```s.historial <número de página> <región> <nombre>```\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```",
         "color": null,
         "author": {
           "name": "¡Faltan argumentos!"

@@ -59,7 +59,7 @@ module.exports = {
         embed.setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${(await championData).id}_0.jpg`)
         embed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`)
         embed.setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL())
-        embed.setTimestamp();
+        embed.setTimestamp(new Date());
         if ((await masteryData).championLevel < 5) {
             embed.addField('Puntos hasta el siguiente nivel:', `${(await masteryData).championPointsUntilNextLevel}`)
         }; if ((await masteryData).championLevel == 5 && (await masteryData).championLevel < 7) {

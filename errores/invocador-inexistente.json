@@ -3,7 +3,7 @@
   "embed": 
       {
         "title": "El invocador que buscas no existe en esta región.",
-        "description": "¡Asegúrate de haber introducido el nombre y región correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE```",
+        "description": "¡Asegúrate de haber introducido el nombre y región correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```",
         "color": null,
         "author": {
           "name": "¡Ha ocurrido un error!"

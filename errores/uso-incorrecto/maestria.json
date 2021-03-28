@@ -3,7 +3,7 @@
     "embed": 
       {
         "title": "Me falta información para poder completar la solicitud.",
-        "description": "El uso correcto del comando es ```s.maestria <región> <campeón> <nombre>```\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE```\n**Recuerda que debes introducir el nombre del campeón sin espacios o comillas (Tahmkench, Leesin, Kaisa...).**",
+        "description": "El uso correcto del comando es ```s.maestria <campeón> <región> <nombre>```\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```\n**Recuerda que debes introducir el nombre del campeón sin espacios o comillas (Tahmkench, Leesin, Kaisa...).**",
         "color": null,
         "author": {
           "name": "¡Faltan argumentos!"

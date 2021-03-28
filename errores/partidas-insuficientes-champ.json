@@ -3,7 +3,7 @@
   "embed": 
       {
         "title": "El invocador que buscas no tiene suficientes partidas con este campeón",
-        "description": "El invocador que buscas debe haber jugado al menos 10 partidas con este campeón. ¡Asegúrate de haber introducido el nombre y el campeón correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE```\n**Recuerda que debes escribir el nombre del campeón sin espacios o comillas:**\n```Leesin, Tahmkench, Twistedfate, Kaisa, Kogmaw...```",
+        "description": "El invocador que buscas debe haber jugado al menos 10 partidas con este campeón. ¡Asegúrate de haber introducido el nombre y el campeón correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```\n**Recuerda que debes escribir el nombre del campeón sin espacios o comillas:**\n```Leesin, Tahmkench, Twistedfate, Kaisa, Kogmaw...```",
         "color": null,
         "author": {
           "name": "¡Ha ocurrido un error!"

@@ -21,7 +21,7 @@ module.exports = {
 		embed.addField(`E: ${(await getInfo).spells.e.name}`, `\`\`\`${(await getInfo).spells.e.description}\`\`\``);
 		embed.addField(`R: ${(await getInfo).spells.r.name}`, `\`\`\`${(await getInfo).spells.r.description}\`\`\``);
 		embed.setFooter(`Solicitado por ${message.author.username}`);
-		embed.setTimestamp();
+		embed.setTimestamp(new Date());
 		
 		(await msg).edit(embed);
 	}

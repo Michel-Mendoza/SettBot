@@ -3,7 +3,7 @@
   "embed": 
       {
         "title": "La región introducida no está disponible.",
-        "description": "Recuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE```",
+        "description": "Recuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```",
         "color": null,
         "author": {
           "name": "¡Ha ocurrido un error!"

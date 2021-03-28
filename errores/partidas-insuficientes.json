@@ -3,7 +3,7 @@
   "embed": 
       {
         "title": "El invocador que buscas no tiene suficientes partidas recientemente",
-        "description": "El invocador que buscas debe haber jugado al menos 5 partidas recientemente. ¡Asegúrate de haber introducido el nombre correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE``````",
+        "description": "El invocador que buscas debe haber jugado al menos 5 partidas recientemente. ¡Asegúrate de haber introducido el nombre correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```",
         "color": null,
         "author": {
           "name": "¡Ha ocurrido un error!"

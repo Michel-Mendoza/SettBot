@@ -3,7 +3,7 @@
     "embed": 
       {
         "title": "El invocador que buscas nunca ha jugado este campeón",
-        "description": "¡Asegúrate de haber introducido el nombre y el campeón correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS, KR, OCE```\n**Recuerda que debes escribir el nombre del campeón sin espacios o comillas:**\n```Leesin, Tahmkench, Twistedfate, Kaisa, Kogmaw...```",
+        "description": "¡Asegúrate de haber introducido el nombre y el campeón correctamente!\nRecuerda que las regiones disponibles son:\n```EUW, EUNE, NA, LAN, LAS```\n**Recuerda que debes escribir el nombre del campeón sin espacios o comillas:**\n```Leesin, Tahmkench, Twistedfate, Kaisa, Kogmaw...```",
         "color": null,
         "author": {
           "name": "¡Ha ocurrido un error!"
