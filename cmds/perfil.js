@@ -65,7 +65,6 @@ module.exports = {
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
         embed.addField('Campeones con mayor maestría:', `${champion1}\n${champion2}\n${champion3}`, true);
         embed.addField('‎', '‎', true);
-        embed.addField('‎', '‎', true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
         embed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`)
