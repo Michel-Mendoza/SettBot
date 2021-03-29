@@ -1,6 +1,6 @@
 const MeowDB = require('meowdb');
 const eco = new MeowDB({
-    dir: "../data/",
+    dir: __dirname,
     name: "database"
 })
 
