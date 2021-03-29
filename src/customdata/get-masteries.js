@@ -51,15 +51,15 @@ module.exports.get = async function(region, summonerId) {
     var masteryData = {
       champ1: {
         string: `**${champ1Name}** - Nivel ${champ1Level} - ${champ1Points} Puntos.`,
-        name: champ1Name
+        key: champ1Id
       },
       champ2: {
         string: `**${champ2Name}** - Nivel ${champ2Level} - ${champ2Points} Puntos.`,
-        name: champ2Name
+        key: champ2Id
       },
       champ3: {
         string: `**${champ3Name}** - Nivel ${champ3Level} - ${champ3Points} Puntos.`,
-        name: champ3Name
+        key: champ3Id
       },
       totalPoints: masteryPoints
     }; return masteryData

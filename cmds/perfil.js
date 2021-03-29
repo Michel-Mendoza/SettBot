@@ -43,13 +43,13 @@ module.exports = {
             return `<:${emote.name}:${emote.id}>`
         }
 
-        const emote1 = getEmote(client, ((await masteriesData).champ1.name))
-        const emote2 = getEmote(client, ((await masteriesData).champ2.name))
-        const emote3 = getEmote(client, ((await masteriesData).champ3.name))
+        const emote1 = getEmote(client, ((await masteriesData).champ1.id))
+        const emote2 = getEmote(client, ((await masteriesData).champ2.id))
+        const emote3 = getEmote(client, ((await masteriesData).champ3.id))
 
-        const champion1 = `**1.** ${emote1}${(await masteriesData).champ1.string}`
-        const champion2 = `**2.** ${emote2}${(await masteriesData).champ2.string}`
-        const champion3 = `**3.** ${emote3}${(await masteriesData).champ3.string}`
+        const champion1 = `**1.** ${emote1} ${(await masteriesData).champ1.string}`
+        const champion2 = `**2.** ${emote2} ${(await masteriesData).champ2.string}`
+        const champion3 = `**3.** ${emote3} ${(await masteriesData).champ3.string}`
         
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
