@@ -28,12 +28,14 @@ module.exports = {
         let masteries = require("../src/customdata/get-masteries.js");
         let lastGame = require("../src/customdata/last-game-data.js");
         let last10GamesWL = require("../src/customdata/last-10-games-win-and-loose.js");
+        const ddragonver = require("../src/ddragon/ddragon-ver.js");
     
         let summonerData = summonerByName.get(region, name); if (!(await summonerData).id) return (await msg).edit(invocadorInexistente); 
         let rankedData = rankedInfo.get(region, (await summonerData).id);
         let masteriesData = masteries.get(region, (await summonerData).id);
         let lastGameData = lastGame.get(region, (await summonerData).accountId);
         let last10GamesData = last10GamesWL.get(region, (await summonerData).accountId);
+        const version = ddragonver.get();
 
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
