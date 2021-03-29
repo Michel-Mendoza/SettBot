@@ -58,8 +58,8 @@ module.exports = {
         
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
-        embed.setTitle('Esto es lo que he encontrado:');
-        embed.setAuthor(`Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
+        embed.setTitle(`⚙️ Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
+        embed.setDescription('Esto es lo que he encontrado:');
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
         embed.addField('‎', '‎', true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
