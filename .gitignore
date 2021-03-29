@@ -22,6 +22,9 @@ Thumbs.db
 # Node modules
 /node_modules
 
+#MeowDB
+/cmds/database.json
+
 # Coveralls
 coverage
 
