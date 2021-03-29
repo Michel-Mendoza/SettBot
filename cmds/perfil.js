@@ -38,10 +38,9 @@ module.exports = {
         const version = ddragonver.get();
 
         const getChampByKey = require('../src/ddragon/champByKey')
-        const getChamp = getChampByKey.get
-        const id1 = await getChamp((await masteriesData).champ1.id).id
-        const id2 = await getChamp((await masteriesData).champ2.id).id
-        const id3 = await getChamp((await masteriesData).champ3.id).id
+        const id1 = await getChampByKey.get((await masteriesData).champ1.key)
+        const id2 = await getChampByKey.get((await masteriesData).champ2.key)
+        const id3 = await getChampByKey.get((await masteriesData).champ3.key)
 
         function getEmote(client, name) {
             let emotes = client.emojis.cache
