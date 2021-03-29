@@ -43,9 +43,14 @@ module.exports = {
             return `<:${emote.name}:${emote.id}>`
         }
 
-        const emote1 = getEmote(client, ((await masteriesData).champ1.id))
-        const emote2 = getEmote(client, ((await masteriesData).champ2.id))
-        const emote3 = getEmote(client, ((await masteriesData).champ3.id))
+        const getChampByKey = require('../src/ddragon/champByKey').get
+        const id1 = await getChampByKey((await masteriesData).champ1.id).id
+        const id2 = await getChampByKey((await masteriesData).champ2.id).id
+        const id3 = await getChampByKey((await masteriesData).champ3.id).id
+
+        const emote1 = getEmote(client, id1)
+        const emote2 = getEmote(client, id2)
+        const emote3 = getEmote(client, id3)
 
         const champion1 = `**1.** ${emote1} ${(await masteriesData).champ1.string}`
         const champion2 = `**2.** ${emote2} ${(await masteriesData).champ2.string}`
