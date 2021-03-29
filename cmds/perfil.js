@@ -59,7 +59,6 @@ module.exports = {
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
         embed.setTitle('Esto es lo que he encontrado:');
-        embed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`)
         embed.setAuthor(`Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
         embed.addField('‎', '‎', true);
@@ -68,6 +67,7 @@ module.exports = {
         embed.addField('‎', '‎', true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
+        embed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`)
         embed.setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL());
         embed.setTimestamp(new Date());
 
