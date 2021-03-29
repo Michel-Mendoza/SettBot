@@ -10,7 +10,7 @@ module.exports = {
     description: 'Comando para ver tus puntos.',
     async execute(message) {        
         let mencionado = message.mentions.members.first();
-        console.log(mencionado)
+        console.log(mencionado.id)
         if(!mencionado) {
         eco.create(`${message.guild.id}.${message.author.id}`, {
             money: 0,
@@ -35,8 +35,8 @@ module.exports = {
         });
         let user = eco.get(`${message.guild.id}.${mencionado.id}`)
         const balance = new Discord.MessageEmbed()
-        .setTitle(`Este es el balance de ${mencionado.user.nickname}`)
-        .setDescription(`${mencionado.user.nickname} tiene ahora mismo:`)
+        .setTitle(`Este es el balance de ${mencionado.guild.nickname}`)
+        .setDescription(`${mencionado.guild.nickname} tiene ahora mismo:`)
         .addFields(
             { name: 'Puntos actuales:', value: user.money, inline: true},
             { name: 'Puntos en el banco:', value: user.bank, inline: true },
