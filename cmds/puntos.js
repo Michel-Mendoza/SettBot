@@ -34,7 +34,7 @@ module.exports = {
         });
         let user = eco.get(`${message.guild.id}.${mencionado.id}`)
         const balance = new Discord.MessageEmbed()
-        .setTitle(`Este es el balance de ${mencionado.nickname}`, mencionado.avatarURL())
+        .setTitle(`Este es el balance de ${mencionado.nickname}`, `https://cdn.discordapp.com/avatars/${mencionado.id}/${mencionado.avatar}`)
         .setDescription(`${mencionado.nickname} tiene ahora mismo:`)
         .addFields(
             { name: 'Puntos actuales:', value: user.money, inline: true},
