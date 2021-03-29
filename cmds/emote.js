@@ -3,6 +3,7 @@ module.exports = {
     description: 'test',
     async execute(message, args, client) {
         const emotes = client.emojis.cache
-        console.log(emotes)
+        const emote = emotes.find(emoji => emoji.name === 'Yasuo')
+        console.log(emote)
     }
 }
