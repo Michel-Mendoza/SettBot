@@ -42,6 +42,7 @@ module.exports = {
         )
         .setTimestamp()
         message.channel.send(balance)
+        message.channel.send(`https://cdn.discordapp.com/avatars/${mencionado.id}/${mencionado.avatar}`)
         }
         
     }
