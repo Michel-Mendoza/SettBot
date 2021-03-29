@@ -25,7 +25,7 @@ module.exports = {
         const isCommand = comandos.includes(toExecute);
         if (isCommand == false) return;
         try {
-            cmds.get(command).execute(message, args);
+            cmds.get(command).execute(message, args, client);
         } catch (error) {
             message.reply('ha ocurrido un error interno al ejecutar este comando. Prueba de nuevo más tarde.');
             console.error(error);
