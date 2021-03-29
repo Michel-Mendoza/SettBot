@@ -41,6 +41,12 @@ module.exports.get = async function(region, summonerId) {
     var champ1Name = datos.find(e => e.key == champ1Id).name
     var champ2Name = datos.find(e => e.key == champ2Id).name
     var champ3Name = datos.find(e => e.key == champ3Id).name
+
+    function separar(num) {
+      var num_parts = num.toString().split(".");
+      num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return num_parts.join(".");
+    }
   
     }
   
@@ -50,15 +56,15 @@ module.exports.get = async function(region, summonerId) {
   
     var masteryData = {
       champ1: {
-        string: `**${champ1Name}** - Nivel ${champ1Level} - ${champ1Points} Puntos.`,
+        string: `**${champ1Name} [${champ1Level}]** ${separar(champ1Points)} Puntos.`,
         key: champ1Id
       },
       champ2: {
-        string: `**${champ2Name}** - Nivel ${champ2Level} - ${champ2Points} Puntos.`,
+        string: `**${champ2Name} [${champ2Level}]** ${separar(champ2Points)} Puntos.`,
         key: champ2Id
       },
       champ3: {
-        string: `**${champ3Name}** - Nivel ${champ3Level} - ${champ3Points} Puntos.`,
+        string: `**${champ3Name} [${champ3Level}]** ${separar(champ3Points)} Puntos.`,
         key: champ3Id
       },
       totalPoints: masteryPoints
