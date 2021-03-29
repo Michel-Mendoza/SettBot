@@ -42,7 +42,9 @@ module.exports = {
         embed.setTitle('Esto es lo que he encontrado:');
         embed.setAuthor(`Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`, `https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`);
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
+        embed.addField('‎', '‎', true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
+        embed.addField('‎', '‎', true);
         embed.addField('Campeones con mayor maestría:', `${(await masteriesData).champ1}\n${(await masteriesData).champ2}\n${(await masteriesData).champ3}`, true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
