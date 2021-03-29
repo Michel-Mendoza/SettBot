@@ -37,12 +37,11 @@ module.exports = {
         let last10GamesData = last10GamesWL.get(region, (await summonerData).accountId);
         const version = ddragonver.get();
 
-        const getChampByKey = require('../src/ddragon/champByKey').get
-        const id1 = await getChampByKey((await masteriesData).champ1.id).id
-        const id2 = await getChampByKey((await masteriesData).champ2.id).id
-        const id3 = await getChampByKey((await masteriesData).champ3.id).id
-
-        console.log(id1)
+        const getChampByKey = require('../src/ddragon/champByKey')
+        const getChamp = getChampByKey.get
+        const id1 = await getChamp((await masteriesData).champ1.id).id
+        const id2 = await getChamp((await masteriesData).champ2.id).id
+        const id3 = await getChamp((await masteriesData).champ3.id).id
 
         function getEmote(client, name) {
             let emotes = client.emojis.cache
