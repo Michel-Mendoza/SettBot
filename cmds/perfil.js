@@ -44,8 +44,8 @@ module.exports = {
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
         embed.addField('‎', '‎', true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
-        embed.addField('‎', '‎', true);
         embed.addField('Campeones con mayor maestría:', `${(await masteriesData).champ1}\n${(await masteriesData).champ2}\n${(await masteriesData).champ3}`, true);
+        embed.addField('‎', '‎', true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
         embed.setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL());
