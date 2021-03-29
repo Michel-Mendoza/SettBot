@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const MeowDB = require('meowdb');
 const eco = new MeowDB({
     dir: __dirname,
