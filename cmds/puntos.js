@@ -10,10 +10,9 @@ module.exports = {
     description: 'Comando para ver tus puntos.',
     async execute(message) {        
         let mencionado = message.mentions.members.first();
-        console.log(mencionado.id)
         if(!mencionado) {
         eco.create(`${message.guild.id}.${message.author.id}`, {
-            money: 0,
+            money: 500,
             bank: 0,
             time: 0
         });            
@@ -29,7 +28,7 @@ module.exports = {
         message.channel.send(balance)
         } else {
         eco.create(`${message.guild.id}.${mencionado.id}`, {
-            money: 0,
+            money: 500,
             bank: 0,
             time: 0
         });
