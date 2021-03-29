@@ -58,12 +58,13 @@ module.exports = {
         
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
-        embed.setTitle(`⚙️ Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
+        embed.setTitle(`🔰 Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
         embed.setDescription('Esto es lo que he encontrado:');
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
         embed.addField('‎', '‎', true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
         embed.addField('Campeones con mayor maestría:', `${champion1}\n${champion2}\n${champion3}`, true);
+        embed.addField('‎', '‎', true);
         embed.addField('‎', '‎', true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
