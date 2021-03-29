@@ -48,9 +48,9 @@ module.exports = {
             return `<:${emote.name}:${emote.id}>`
         }
 
-        const emote1 = getEmote(client, id1)
-        const emote2 = getEmote(client, id2)
-        const emote3 = getEmote(client, id3)
+        const emote1 = getEmote(client, id1.id)
+        const emote2 = getEmote(client, id2.id)
+        const emote3 = getEmote(client, id3.id)
 
         const champion1 = `**1.** ${emote1} ${(await masteriesData).champ1.string}`
         const champion2 = `**2.** ${emote2} ${(await masteriesData).champ2.string}`
