@@ -6,6 +6,6 @@ module.exports = {
         console.log(`Bot listo.`)
         const servers = await client.guilds.cache.size
         const owner = await client.users.fetch('797254248387444769');
-        owner.send(`Bot iniciado. ${new Date()}\nEstoy en ${servers} servidores.`);
+        owner.send(`\`Bot iniciado. ${new Date()}\nEstoy en ${servers} servidores.\``);
 	},
 };  

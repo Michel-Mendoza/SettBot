@@ -34,7 +34,7 @@ module.exports = {
         let summonerData = summonerByName.get(region, name); if (!(await summonerData).id) return (await msg).edit(invocadorInexistente);
         let history = await getHistory.get(region, (await summonerData).accountId, startIndex); if (getHistory == false) return (await msg).edit(notEnough);
         let version = ddragonver.get();
-        let mark = "```";
+        let mark = "`";
 
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
