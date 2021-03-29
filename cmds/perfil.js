@@ -43,6 +43,7 @@ module.exports = {
         const id3 = await getChampByKey((await masteriesData).champ3.id).id
 
         function getEmote(client, name) {
+            console.log(name);
             let emotes = client.emojis.cache
             let emote = emotes.find(e => e.name.toLowerCase() === name.toLowerCase())
             return `<:${emote.name}:${emote.id}>`
