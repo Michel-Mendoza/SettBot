@@ -1,7 +1,7 @@
 module.exports = {
     name: 'perfil',
     description: 'Devuelve información como el estado de clasificatorias de un jugador, además de sus campeones con más maestría, entre otros datos.',
-    async execute(message, args) {
+    async execute(message, args, client) {
         let regionError = require("../errores/regionError.json");
         let invocadorInexistente = require("../errores/invocador-inexistente.json");
         let missingArgs = require("../errores/uso-incorrecto/perfil.json");
@@ -37,6 +37,20 @@ module.exports = {
         let last10GamesData = last10GamesWL.get(region, (await summonerData).accountId);
         const version = ddragonver.get();
 
+        function getEmote(client, name) {
+            let emotes = client.emojis.cache
+            let emote = emotes.find(e => e.name.toLowerCase() === name.toLowerCase())
+            return `<:${emote.name}:${emote.id}>`
+        }
+
+        const emote1 = getEmote(client, ((await masteriesData).champ1.name))
+        const emote2 = getEmote(client, ((await masteriesData).champ2.name))
+        const emote3 = getEmote(client, ((await masteriesData).champ3.name))
+
+        const champion1 = `**1.** ${emote1}${(await masteriesData).champ1.string}`
+        const champion2 = `**2.** ${emote2}${(await masteriesData).champ2.string}`
+        const champion3 = `**3.** ${emote3}${(await masteriesData).champ3.string}`
+        
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
         embed.setTitle('Esto es lo que he encontrado:');
@@ -44,7 +58,7 @@ module.exports = {
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
         embed.addField('‎', '‎', true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
-        embed.addField('Campeones con mayor maestría:', `${(await masteriesData).champ1}\n${(await masteriesData).champ2}\n${(await masteriesData).champ3}`, true);
+        embed.addField('Campeones con mayor maestría:', `${champion1}\n${champion2}\n${champion3}`, true);
         embed.addField('‎', '‎', true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);

@@ -49,9 +49,18 @@ module.exports.get = async function(region, summonerId) {
     let masteryPoints = await masteryPointsApi.json()
   
     var masteryData = {
-      champ1: '**1. ' + champ1Name + '** - Nivel ' + champ1Level + ' - ' + champ1Points + ' Puntos.',
-      champ2: '**2. ' + champ2Name + '** - Nivel ' + champ2Level + ' - ' + champ2Points + ' Puntos.',
-      champ3: '**3. ' + champ3Name + '** - Nivel ' + champ3Level + ' - ' + champ3Points + ' Puntos.',
+      champ1: {
+        string: `**${champ1Name}** - Nivel ${champ1Level} - ${champ1Points} Puntos.`,
+        name: champ1Name
+      },
+      champ2: {
+        string: `**${champ2Name}** - Nivel ${champ2Level} - ${champ2Points} Puntos.`,
+        name: champ2Name
+      },
+      champ3: {
+        string: `**${champ3Name}** - Nivel ${champ3Level} - ${champ3Points} Puntos.`,
+        name: champ3Name
+      },
       totalPoints: masteryPoints
     }; return masteryData
   }
