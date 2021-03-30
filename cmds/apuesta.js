@@ -13,8 +13,8 @@ module.exports = {
         let usuario1 = eco.get(`${message.guild.id}.${message.author.id}`)
         let usuario2 = eco.get(`${message.guild.id}.${mencionado.id}`)
 
-        function winner(a,b,c) {
-            a.money += c
+        function winner(a,b) {
+            a.money += (a.bank+b.bank)
             a.bank -= a.bank
             a.save()
 
@@ -22,12 +22,7 @@ module.exports = {
             b.save()
         }
 
-        let dinero1 = usuario1.bank
-        let dinero2 = usuario2.bank
-
-        let apostado = dinero1 + dinero2
-
-        if (dinero1 == 0||dinero2 == 0) return message.reply('tú o la persona con la que quieres apostar no tenéis dinero en juego. Apuesta con s.apostar <cantidad>')
+        if (usuario1.bank == 0||usuario2.bank == 0) return message.reply('tú o la persona con la que quieres apostar no tenéis dinero en juego. Apuesta con s.apostar <cantidad>')
 
         const msg = await message.channel.send(`${mencionado.nickname}, ¿quieres aceptar la apuesta? Reacciona con ✅ si estás de acuerdo. Tus ${dinero2} puntos serán restados de tu cartera.`) 
         await msg.react('✅')
@@ -58,17 +53,14 @@ module.exports = {
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
-                            usuario1.bank == dinero1; usuario2.bank == dinero2; usuario1.save(); usuario2.save()
                     });
                     }
                 }).catch(() => {
                     message.channel.send('La apuesta se ha cancelado.');
-                    usuario1.bank == dinero1; usuario2.bank == dinero2; usuario1.save(); usuario2.save()
             });
             }
         }).catch(() => {
             message.channel.send('La apuesta se ha cancelado.');
-            usuario1.bank == dinero1; usuario2.bank == dinero2; usuario1.save(); usuario2.save()
     });
     }
 
