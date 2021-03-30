@@ -18,7 +18,7 @@ module.exports = {
         });            
         let user = eco.get(`${message.guild.id}.${message.author.id}`)
         const balance = new Discord.MessageEmbed()
-        .setAuthor('Tu balance de puntos')
+        .setAuthor('🔰 Tu balance de puntos')
         .setThumbnail(message.author.avatarURL())
         .setDescription('Ahora mismo tienes:')
         .addFields(
@@ -36,7 +36,7 @@ module.exports = {
         let user = eco.get(`${message.guild.id}.${mencionado.id}`)
         let avatar = `https://cdn.discordapp.com/avatars/${mencionado.id}/${mencionado.user.avatar}`
         const balance = new Discord.MessageEmbed()
-        .setTitle(`Este es el balance de ${mencionado.nickname}`)
+        .setTitle(`🔰 Este es el balance de ${mencionado.nickname}`)
         .setThumbnail(avatar)
         .setDescription(`${mencionado.nickname} tiene ahora mismo:`)
         .addFields(
