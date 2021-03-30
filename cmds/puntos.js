@@ -18,7 +18,7 @@ module.exports = {
         });            
         let user = eco.get(`${message.guild.id}.${message.author.id}`)
         const balance = new Discord.MessageEmbed()
-        .setAuthor('🔰 Tu balance de puntos')
+        .setTitle('🔰 Tu balance de puntos')
         .setThumbnail(message.author.avatarURL())
         .setDescription('Ahora mismo tienes:')
         .addFields(
