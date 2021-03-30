@@ -31,8 +31,8 @@ module.exports = {
 
         if (dinero1 == 0||dinero2 == 0) return message.reply('tú o la persona con la que quieres apostar no tenéis dinero en juego. Apuesta con s.apostar <cantidad>')
 
-        user.bank -= user.bank; user.save()
-        user2.bank -= user2.bank; user2.save()
+        user.bank -= dinero1; user.save()
+        user2.bank -= dinero2; user2.save()
 
         const msg = await message.channel.send(`${mencionado.nickname}, ¿quieres aceptar la apuesta? Reacciona con 👍 si estás de acuerdo. Tus ${dinero2} puntos serán restados de tu cartera.`) 
         await msg.react('👍')
