@@ -5,7 +5,7 @@ const eco = new MeowDB({
 })
 
 module.exports = {
-    name: 'apostar',
+    name: 'apuesta',
     description: 'Comando para apostar tus puntos.',
     async execute(message) {
         let mencionado = message.mentions.members.first();
