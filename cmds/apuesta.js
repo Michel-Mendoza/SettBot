@@ -15,9 +15,7 @@ module.exports = {
 
         let dineroapostado = usuario1.bank+usuario2.bank
 
-        function awinner(a,b,c) {
-            a.money +=
-            a.save()
+        function resetbank(a,b) {
             a.bank -= a.bank
             a.save()
 
@@ -49,10 +47,14 @@ module.exports = {
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${usuario1.bank+usuario2.bank} puntos y el dinero en juego se ha establecido a 0.`)
-                                awinner(usuario2, usuario1, dineroapostado)
+                                usuario2.money == dineroapostado+usuario2.money
+                                usuario2.save()
+                                resetbank(usuario1, usuario2)
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
-                                awinner(usuario1, usuario2, dineroapostado)
+                                usuario1.money == dineroapostado+usuario1.money
+                                usuario1.save()
+                                resetbank(usuario1, usuario2)
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
