@@ -24,7 +24,7 @@ module.exports = {
 
         if (usuario1.bank == 0||usuario2.bank == 0) return message.reply('tú o la persona con la que quieres apostar no tenéis dinero en juego. Apuesta con s.apostar <cantidad>')
 
-        const msg = await message.channel.send(`${mencionado.nickname}, ¿quieres aceptar la apuesta? Reacciona con ✅ si estás de acuerdo. Tus ${dinero2} puntos serán restados de tu cartera.`) 
+        const msg = await message.channel.send(`${mencionado.nickname}, ¿quieres aceptar la apuesta? Reacciona con ✅ si estás de acuerdo. Tus ${usuario2.bank} puntos serán restados de tu cartera.`) 
         await msg.react('✅')
 
         msg.awaitReactions((reaction, user) => user.id == mencionado.id && reaction.emoji.name == '✅', {
