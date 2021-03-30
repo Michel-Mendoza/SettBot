@@ -57,9 +57,11 @@ module.exports = {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${dinero2} puntos y el dinero apostado se ha añadido a tu dinero total.`)
                                 user2.money += apostado; user2.save();
+                                user.bank == 0; user.save();
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! Has perdido ${dinero2} puntos.`)
                                 user.money += apostado; user.save();
+                                user2.bank == 0; user2.save()
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
