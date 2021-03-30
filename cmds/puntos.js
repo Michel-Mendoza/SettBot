@@ -23,7 +23,7 @@ module.exports = {
         .setDescription('Ahora mismo tienes:')
         .addFields(
             { name: 'Puntos actuales:', value: user.money, inline: true},
-            { name: 'Puntos en el banco:', value: user.bank, inline: true },
+            { name: 'Puntos en juego:', value: user.bank, inline: true },
         )
         .setTimestamp()
         message.channel.send(balance)
@@ -41,7 +41,7 @@ module.exports = {
         .setDescription(`${mencionado.nickname} tiene ahora mismo:`)
         .addFields(
             { name: 'Puntos actuales:', value: user.money, inline: true},
-            { name: 'Puntos en el banco:', value: user.bank, inline: true },
+            { name: 'Puntos en juego:', value: user.bank, inline: true },
         )
         .setTimestamp()
         message.channel.send(balance)
