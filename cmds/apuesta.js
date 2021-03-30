@@ -13,8 +13,10 @@ module.exports = {
         let usuario1 = eco.get(`${message.guild.id}.${message.author.id}`)
         let usuario2 = eco.get(`${message.guild.id}.${mencionado.id}`)
 
-        function awinner(a,b) {
-            a.money += a.bank+b.bank
+        let dineroapostado = usuario1.bank+usuario2.bank
+
+        function awinner(a,b,c) {
+            a.money +=
             a.save()
             a.bank -= a.bank
             a.save()
@@ -47,10 +49,10 @@ module.exports = {
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${usuario1.bank+usuario2.bank} puntos y el dinero en juego se ha establecido a 0.`)
-                                awinner(usuario2, usuario1)
+                                awinner(usuario2, usuario1, dineroapostado)
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
-                                awinner(usuario1, usuario2)
+                                awinner(usuario1, usuario2, dineroapostado)
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
