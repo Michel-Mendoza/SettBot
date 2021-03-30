@@ -46,10 +46,10 @@ module.exports = {
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${apostado} puntos y el dinero en juego se ha establecido a 0.`)
-                                winner(usuario2, usuario1, apostado)
+                                winner(usuario2, usuario1)
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
-                                winner(usuario1, usuario2, apostado)
+                                winner(usuario1, usuario2)
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
