@@ -17,12 +17,6 @@ module.exports = {
             time: 0
         });    
 
-        eco.create(`${message.guild.id}.${mencionado.id}`, {
-            money: 500,
-            bank: 0,
-            time: 0
-        });
-
         if(user.money >= cantidad) {
             user.money -= cantidad;
             user.bank += cantidad;
