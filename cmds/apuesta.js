@@ -27,21 +27,21 @@ module.exports = {
 
         msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '👍', {
             max: 1, time: 3000
-        }).then(collected => {
+        }).then(async collected => {
             if (collected.first().emoji.name == '👍') {
                 const init = await message.channel.send(`La apuesta ha iniciado correctamente. Cuando acabéis, finaliza la apuesta reaccionando a este mensaje con 👍.`)
                 await init.react('👍')
 
                 init.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '👍', {
                     max: 1, time: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
-                }).then(collected => {
+                }).then(async collected => {
                     if (collected.first().emoji.name == '👍') {
                         const win = await message.channel.send(`La apuesta finalizado. ¿Has ganado? Si es así, reacciona con 👍. En caso contrario, hazlo con 👎.`)
                         await win.react('👍'); await win.react('👎')
 
                         win.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👍' || reaction.emoji.name == '👎'), {
                             max: 1, time: 3000
-                        }).then(collected => {
+                        }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${dinero2} puntos y el dinero apostado se ha añadido a tu dinero total.`)
                                 user2.money += apostado; user2.save();
