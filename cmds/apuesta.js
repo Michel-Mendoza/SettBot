@@ -14,8 +14,10 @@ module.exports = {
         let usuario2 = eco.get(`${message.guild.id}.${mencionado.id}`)
 
         function winner(a,b) {
-            a.money += (a.bank+b.bank)
+            money = a.bank+b.bank
+            a.money += money
             a.bank -= a.bank
+            a.bank == 0
             a.save()
 
             b.bank -= b.bank
@@ -45,7 +47,7 @@ module.exports = {
                             max: 1, time: 30000
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
-                                message.channel.send(`¡Enhorabuena! Has ganado ${apostado} puntos y el dinero en juego se ha establecido a 0.`)
+                                message.channel.send(`¡Enhorabuena! Has ganado ${usuario1.bank+usuario2.bank} puntos y el dinero en juego se ha establecido a 0.`)
                                 winner(usuario2, usuario1)
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
