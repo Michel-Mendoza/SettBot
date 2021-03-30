@@ -26,7 +26,7 @@ module.exports = {
         await msg.react('👍')
 
         msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '👍', {
-            max: 1, time: 3000
+            max: 1, time: 30000
         }).then(async collected => {
             if (collected.first().emoji.name == '👍') {
                 const init = await message.channel.send(`La apuesta ha iniciado correctamente. Cuando acabéis, finaliza la apuesta reaccionando a este mensaje con 👍.`)
@@ -40,7 +40,7 @@ module.exports = {
                         await win.react('👍'); await win.react('👎')
 
                         win.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👍' || reaction.emoji.name == '👎'), {
-                            max: 1, time: 3000
+                            max: 1, time: 30000
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${dinero2} puntos y el dinero apostado se ha añadido a tu dinero total.`)
