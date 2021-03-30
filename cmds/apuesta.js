@@ -52,9 +52,10 @@ module.exports = {
                                 resetbank(usuario1, usuario2)
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
-                                usuario1.money == dineroapostado+usuario1.money
-                                usuario1.save()
+                                usuario2.money == dineroapostado+usuario2.money
+                                usuario2.save()
                                 resetbank(usuario1, usuario2)
+                                
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
