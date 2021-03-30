@@ -20,8 +20,8 @@ module.exports = {
 
         if (dinero1 == 0||dinero2 == 0) return message.reply('tú o la persona con la que quieres apostar no tenéis dinero en juego. Apuesta con s.apostar <cantidad>')
 
-        user.bank -= dinero1; user.save()
-        user2.bank -= dinero2; user2.save()
+        user.bank == 0; user.save()
+        user2.bank == 0; user2.save()
 
         const msg = await message.channel.send(`${mencionado.nickname}, ¿quieres aceptar la apuesta? Reacciona con 👍 si estás de acuerdo. Tus ${dinero2} puntos serán restados de tu cartera.`) 
         await msg.react('👍')
@@ -46,15 +46,11 @@ module.exports = {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${apostado} puntos y el dinero en juego se ha establecido a 0.`)
                                 user2.money += apostado;
-                                user.bank == 0;
-                                user2.bank == 0;
-                                user.save(); user2.save();
+                                user.save();
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
                                 user.money += apostado; user.save();
-                                user.bank == 0;
-                                user2.bank == 0;
-                                user.save(); user2.save();
+                                user.save();
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
