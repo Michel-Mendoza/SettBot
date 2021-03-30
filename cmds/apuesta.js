@@ -14,6 +14,18 @@ module.exports = {
         let user2 = eco.get(`${message.guild.id}.${mencionado.id}`)
         let apostado = user.bank+user2.bank
 
+        eco.create(`${message.guild.id}.${message.author.id}`, {
+            money: 500,
+            bank: 0,
+            time: 0
+        });    
+
+        eco.create(`${message.guild.id}.${mencionado.id}`, {
+            money: 500,
+            bank: 0,
+            time: 0
+        });
+
         let dinero1 = user.bank
         let dinero2 = user2.bank
 

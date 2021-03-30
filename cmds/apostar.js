@@ -11,6 +11,18 @@ module.exports = {
         let cantidad = parseInt(args[0]);
         let user = eco.get(`${message.guild.id}.${message.author.id}`)
 
+        eco.create(`${message.guild.id}.${message.author.id}`, {
+            money: 500,
+            bank: 0,
+            time: 0
+        });    
+
+        eco.create(`${message.guild.id}.${mencionado.id}`, {
+            money: 500,
+            bank: 0,
+            time: 0
+        });
+
         if(user.money >= cantidad) {
             user.money -= cantidad;
             user.bank += cantidad;
