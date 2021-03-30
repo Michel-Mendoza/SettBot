@@ -13,6 +13,15 @@ module.exports = {
         let usuario1 = eco.get(`${message.guild.id}.${message.author.id}`)
         let usuario2 = eco.get(`${message.guild.id}.${mencionado.id}`)
 
+        function winner(a,b,c) {
+            a.money += c
+            a.bank -= a.bank
+            a.save()
+
+            b.bank -= b.bank
+            b.save()
+        }
+
         let dinero1 = usuario1.bank
         let dinero2 = usuario2.bank
 
@@ -42,16 +51,10 @@ module.exports = {
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${apostado} puntos y el dinero en juego se ha establecido a 0.`)
-                                usuario2.money==usuario2.money+apostado
-                                usuario2.bank==0
-                                usuario2.save();
-                                usuario1.bank == 0; usuario1.save()
+                                winner(usuario2, usuario1, apostado)
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
-                                usuario1.money==usuario1.money+apostado
-                                usuario1.bank==0
-                                usuario1.save();
-                                usuario2.bank == 0; usuario2.save()
+                                winner(usuario1, usuario2, apostado)
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
