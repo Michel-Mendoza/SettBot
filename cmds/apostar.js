@@ -7,7 +7,7 @@ const eco = new MeowDB({
 module.exports = {
     name: 'apostar',
     description: 'Comando para apostar tus puntos.',
-    async execute(message) {        
+    async execute(message, args) {        
         let cantidad = parseInt(args[0]);
         let user = eco.get(`${message.guild.id}.${message.author.id}`)
 
