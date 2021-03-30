@@ -45,12 +45,22 @@ module.exports = {
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
                                 message.channel.send(`¡Enhorabuena! Has ganado ${apostado} puntos y el dinero en juego se ha establecido a 0.`)
-                                user2.money += apostado;
+                                let dinero = user2.money
+                                let asumar = apostado
+                                let total = dinero+asumar
+                                user2.money==total
+                                user2.bank==0
                                 user.save();
+                                user.bank == 0; user.save()
                             } else if (collected.first().emoji.name == '👎') {
                                 message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
-                                user.money += apostado; user.save();
+                                let dinero = user.money
+                                let asumar = apostado
+                                let total = dinero+asumar
+                                user.money==total
+                                user.bank==0
                                 user.save();
+                                user2.bank == 0; user2.save()
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
