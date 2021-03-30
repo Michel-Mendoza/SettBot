@@ -37,21 +37,21 @@ module.exports = {
         const msg = await message.channel.send(`${mencionado.nickname}, ¿quieres aceptar la apuesta? Reacciona con 👍 si estás de acuerdo. Tus ${dinero2} puntos serán restados de tu cartera.`) 
         await msg.react('👍')
 
-        msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '👍', {
+        msg.awaitReactions((reaction, user) => user.id == mencionado.id && reaction.emoji.name == '👍', {
             max: 1, time: 30000
         }).then(async collected => {
             if (collected.first().emoji.name == '👍') {
-                const init = await message.channel.send(`La apuesta ha iniciado correctamente. Cuando acabéis, finaliza la apuesta reaccionando a este mensaje con 👍.`)
+                const init = await message.channel.send(`La apuesta ha iniciado correctamente. Cuando acabéis, finaliza la apuesta reaccionando a este mensaje con 👍. La apuesta tiene una duración máxima de 3 horas.`)
                 await init.react('👍')
 
-                init.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '👍', {
-                    max: 1, time: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+                init.awaitReactions((reaction, user) => user.id == mencionado.id && reaction.emoji.name == '👍', {
+                    max: 1, time: 10800000
                 }).then(async collected => {
                     if (collected.first().emoji.name == '👍') {
                         const win = await message.channel.send(`La apuesta finalizado. ¿Has ganado? Si es así, reacciona con 👍. En caso contrario, hazlo con 👎.`)
                         await win.react('👍'); await win.react('👎')
 
-                        win.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👍' || reaction.emoji.name == '👎'), {
+                        win.awaitReactions((reaction, user) => user.id == mencionado.id && (reaction.emoji.name == '👍' || reaction.emoji.name == '👎'), {
                             max: 1, time: 30000
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
