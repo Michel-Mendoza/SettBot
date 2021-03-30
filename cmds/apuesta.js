@@ -42,7 +42,7 @@ module.exports = {
                 init.awaitReactions((reaction, user) => user.id == mencionado.id && reaction.emoji.name == '✅', {
                     max: 1, time: 10800000
                 }).then(async collected => {
-                    if (collected.first().emoji.name == '👍') {
+                    if (collected.first().emoji.name == '✅') {
                         const win = await message.channel.send(`La apuesta finalizado. ¿Has ganado? Si es así, reacciona con 👍. En caso contrario, hazlo con 👎.`)
                         await win.react('👍'); await win.react('👎')
 
