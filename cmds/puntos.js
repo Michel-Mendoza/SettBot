@@ -37,7 +37,7 @@ module.exports = {
         let avatar = `https://cdn.discordapp.com/avatars/${mencionado.id}/${mencionado.user.avatar}`
         const balance = new Discord.MessageEmbed()
         .setTitle(`Este es el balance de ${mencionado.nickname}`)
-        .setImage(avatar)
+        .setThumbnail(avatar)
         .setDescription(`${mencionado.nickname} tiene ahora mismo:`)
         .addFields(
             { name: 'Puntos actuales:', value: user.money, inline: true},
