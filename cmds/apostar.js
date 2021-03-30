@@ -15,7 +15,7 @@ module.exports = {
             user.money -= cantidad;
             user.bank += cantidad;
             user.save();
-            message.reply(`has apostado ${cantidad}. Te quedan ${user.money} puntos.`)
+            message.reply(`has apostado ${cantidad} puntos. Te quedan ${user.money} puntos.`)
         } else {
             message.reply('no tienes suficientes puntos para apostar esta cantidad.')
         }  
