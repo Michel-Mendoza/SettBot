@@ -12,22 +12,11 @@ module.exports = {
         if (!mencionado) return message.reply('debes mencionar a alguien para iniciar la apuesta.')
         let user = eco.get(`${message.guild.id}.${message.author.id}`)
         let user2 = eco.get(`${message.guild.id}.${mencionado.id}`)
-        let apostado = user.bank+user2.bank
-
-        eco.create(`${message.guild.id}.${message.author.id}`, {
-            money: 500,
-            bank: 0,
-            time: 0
-        });    
-
-        eco.create(`${message.guild.id}.${mencionado.id}`, {
-            money: 500,
-            bank: 0,
-            time: 0
-        });
 
         let dinero1 = user.bank
         let dinero2 = user2.bank
+
+        let apostado = dinero1 + dinero2
 
         if (dinero1 == 0||dinero2 == 0) return message.reply('tú o la persona con la que quieres apostar no tenéis dinero en juego. Apuesta con s.apostar <cantidad>')
 
@@ -55,13 +44,17 @@ module.exports = {
                             max: 1, time: 30000
                         }).then(async collected => {
                             if (collected.first().emoji.name == '👍') {
-                                message.channel.send(`¡Enhorabuena! Has ganado ${dinero2} puntos y el dinero apostado se ha añadido a tu dinero total.`)
-                                user2.money += apostado; user2.save();
-                                user.bank == 0; user.save();
+                                message.channel.send(`¡Enhorabuena! Has ganado ${apostado} puntos y el dinero en juego se ha establecido a 0.`)
+                                user2.money += apostado;
+                                user.bank == 0;
+                                user2.bank == 0;
+                                user.save(); user2.save();
                             } else if (collected.first().emoji.name == '👎') {
-                                message.channel.send(`¡La próxima vez será! Has perdido ${dinero2} puntos.`)
+                                message.channel.send(`¡La próxima vez será! El dinero en juego se ha establecido a 0.`)
                                 user.money += apostado; user.save();
-                                user2.bank == 0; user2.save()
+                                user.bank == 0;
+                                user2.bank == 0;
+                                user.save(); user2.save();
                             }
                         }).catch(() => {
                             message.channel.send('La apuesta se ha cancelado.');
