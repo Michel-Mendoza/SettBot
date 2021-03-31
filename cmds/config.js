@@ -18,9 +18,9 @@ module.exports = {
             let obj = db.get(`${message.guild.id}`)
             obj.locale = args[1]
             obj.save()
-            if (args[1]==='es_ES') message.reply(msg.es_ES)
-            if (args[1]==='en_US') message.reply(msg.en_US)
-            if (args[1]==='fr_FR') message.reply(msg.fr_FR)
+            if (args[1]==='es_ES') message.reply(msg.locale.es_ES)
+            if (args[1]==='en_US') message.reply(msg.locale.en_US)
+            if (args[1]==='fr_FR') message.reply(msg.locale.fr_FR)
             return
         }
     }
