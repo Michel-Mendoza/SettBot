@@ -44,7 +44,7 @@ module.exports.get = async function(region, accountId, client) {
       let emote = emotes.find(e => e.name.toLowerCase() === name.toLowerCase())
       return `<:${emote.name}:${emote.id}>`
     }
-    let lastChampEmote = (client, (datos.find(e => e.key == lastChamp).id))
+    let lastChampEmote = getEmote(client, (datos.find(e => e.key == lastChamp).id))
   
     var kda = `${participants[participantId].stats.kills}/${participants[participantId].stats.deaths}/${participants[participantId].stats.assists}`
     var minions = participants[participantId].stats.totalMinionsKilled + participants[participantId].stats.neutralMinionsKilled
