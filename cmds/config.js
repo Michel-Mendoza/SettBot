@@ -35,6 +35,6 @@ module.exports = {
                 if (obj.locale==='en_US') message.reply(msg.economy.disable.en_US)
                 if (obj.locale==='fr_FR') message.reply(msg.economy.disable.fr_FR)
             }
-        }
+        } else return;
     }
 }
