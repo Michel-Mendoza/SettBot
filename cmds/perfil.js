@@ -58,7 +58,8 @@ module.exports = {
         
         const dc = require('discord.js');
         const embed = new dc.MessageEmbed();
-        embed.setAuthor(`🔰 Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`, `https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`);
+        embed.setAuthor(`🔰 Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`);
+        embed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`)
         embed.setDescription('Esto es lo que he encontrado:');
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);

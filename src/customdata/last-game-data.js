@@ -49,8 +49,8 @@ module.exports.get = async function(region, accountId, client) {
     var kda = `${participants[participantId].stats.kills}/${participants[participantId].stats.deaths}/${participants[participantId].stats.assists}`
     var minions = participants[participantId].stats.totalMinionsKilled + participants[participantId].stats.neutralMinionsKilled
     
-    if (win == true) var lastGameMessage = `✅ **Victoria** en ${cola} con **${lastChampEmote}${lastChampName} .** KDA: ${kda}. Minions: ${minions}`
-    else var lastGameMessage = `❌ **Derrota** en ${cola} con **${lastChampEmote}${lastChampName} .** KDA: ${kda}. Minions: ${minions}`
+    if (win == true) var lastGameMessage = `✅ **Victoria** en ${cola} con ${lastChampEmote}**${lastChampName}.** KDA: ${kda}. Minions: ${minions}`
+    else var lastGameMessage = `❌ **Derrota** en ${cola} con ${lastChampEmote}**${lastChampName}.** KDA: ${kda}. Minions: ${minions}`
     return lastGameMessage
   }
   
