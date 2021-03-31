@@ -1,4 +1,4 @@
-module.exports.get = async function(region, accountId) {
+module.exports.get = async function(region, accountId, client) {
     let fetch = require("node-fetch")
     let matchApi = await fetch(`https://${region}.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}`, {
         headers: {"X-Riot-Token": process.env.RIOTAPI}})
@@ -38,12 +38,19 @@ module.exports.get = async function(region, accountId) {
 
     let datos = Object.values(champions.data)
     let lastChampName = datos.find(e => e.key == lastChamp).name
+
+    function getEmote(client, name) {
+      let emotes = client.emojis.cache
+      let emote = emotes.find(e => e.name.toLowerCase() === name.toLowerCase())
+      return `<:${emote.name}:${emote.id}>`
+    }
+    let lastChampEmote = (client, (datos.find(e => e.key == lastChamp).id))
   
     var kda = `${participants[participantId].stats.kills}/${participants[participantId].stats.deaths}/${participants[participantId].stats.assists}`
     var minions = participants[participantId].stats.totalMinionsKilled + participants[participantId].stats.neutralMinionsKilled
     
-    if (win == true) var lastGameMessage = `✅ **Victoria** en ${cola} con **${lastChampName} .** KDA: ${kda}. Minions: ${minions}`
-    else var lastGameMessage = `❌ **Derrota** en ${cola} con **${lastChampName} .** KDA: ${kda}. Minions: ${minions}`
+    if (win == true) var lastGameMessage = `✅ **Victoria** en ${cola} con **${lastChampEmote}${lastChampName} .** KDA: ${kda}. Minions: ${minions}`
+    else var lastGameMessage = `❌ **Derrota** en ${cola} con **${lastChampEmote}${lastChampName} .** KDA: ${kda}. Minions: ${minions}`
     return lastGameMessage
   }
   

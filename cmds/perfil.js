@@ -33,7 +33,7 @@ module.exports = {
         let summonerData = summonerByName.get(region, name); if (!(await summonerData).id) return (await msg).edit(invocadorInexistente); 
         let rankedData = rankedInfo.get(region, (await summonerData).id);
         let masteriesData = masteries.get(region, (await summonerData).id);
-        let lastGameData = lastGame.get(region, (await summonerData).accountId);
+        let lastGameData = lastGame.get(region, (await summonerData).accountId, client);
         let last10GamesData = last10GamesWL.get(region, (await summonerData).accountId);
         const version = ddragonver.get();
 
@@ -61,10 +61,9 @@ module.exports = {
         embed.setAuthor(`🔰 Perfil de ${(await summonerData).name} - ${platform.toUpperCase()}`, `https://ddragon.leagueoflegends.com/cdn/${await version}/img/profileicon/${(await summonerData).profileIconId}.png`);
         embed.setDescription('Esto es lo que he encontrado:');
         embed.addField('Nivel:', (await summonerData).summonerLevel, true);
-        embed.addField('‎', '‎', true);
         embed.addField('Últimas 10 Partidas:', await last10GamesData, true);
-        embed.addField('Campeones con mayor maestría:', `${champion1}\n${champion2}\n${champion3}`, true);
         embed.addField('‎', '‎', true);
+        embed.addField('Campeones con mayor maestría:', `${champion1}\n${champion2}\n${champion3}`, true);
         embed.addField('Estadísticas en Clasificatoria Solo/Dúo:', (await rankedData).isRanked?`${(await rankedData).elo}\n${(await rankedData).leaguePoints} Puntos de Liga ${(await rankedData).winRatio}`:'Sin clasificar', true);
         embed.addField('Última partida:', `${await lastGameData}`);
         embed.setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL());
