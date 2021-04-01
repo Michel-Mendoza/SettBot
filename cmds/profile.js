@@ -63,7 +63,7 @@ module.exports = {
         } if (last10Games.game4.remake == false) {
             if (last10Games.game4.win == true) wins++; else losses++
         } if (last10Games.game5.remake == false) {
-            if (last10Games.gam5.win == true) wins++; else losses++
+            if (last10Games.game5.win == true) wins++; else losses++
         } if (last10Games.game6.remake == false) {
             if (last10Games.game6.win == true) wins++; else losses++
         } if (last10Games.game7.remake == false) {
