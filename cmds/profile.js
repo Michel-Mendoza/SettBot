@@ -300,9 +300,9 @@ module.exports = {
             };
         };
 
-        function emote (client, emote) {
+        function emote (client, name) {
             let emotes = client.emojis.cache
-            let emote = emotes.find(e => e.name.toLowerCase() === emote.toLowerCase())
+            let emote = emotes.find(e => e.name.toLowerCase() === name.toLowerCase())
             return `<:${emote.name}:${emote.id}>`
         };
     }
