@@ -23,11 +23,11 @@ module.exports = {
             if (userdata.locale==='Espanol') return message.reply(missing_args.Espanol)
         };
         if (!args[1]&&userdata.verified==true) {
-            const name = userdata.summoner;
-            const platform = userdata.region.toUpperCase();
-        } else {
-            const platform = args.shift().toUpperCase();
-            const name = args.join(' ')
+            var name = userdata.summoner;
+            var platform = userdata.region.toUpperCase();
+        } else if (args[1]) {
+            var platform = args.shift().toUpperCase();
+            var name = args.join(' ')
         }
         let knownRegion = [
             "EUW", "EUNE", "NA", "LAS", "LAN"
