@@ -140,8 +140,8 @@ module.exports = {
                 message.reply(embed_english)
             }
         async function summoner_api (region, name)  {
-            const api = `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`;
-            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
+            const api = `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}?api_key=${process.env.RIOTAPI}`;
+            const data = await fetch(api);
             const json = await data.json();
             const versions = await fetch(`https://ddragon.leagueoflegends.com/api/versions.json`)
             const version = await versions.json()
@@ -157,8 +157,8 @@ module.exports = {
         };
 
         async function mastery_api (region, id) {
-            const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}`;
-            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
+            const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
+            const data = await fetch(api);
             const json = await data.json();
             console.log(json)
             if (json.length < 3) return false;
@@ -189,8 +189,8 @@ module.exports = {
         };
 
         async function soloqueue_api (region, id) {
-            const api = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`;
-            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
+            const api = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
+            const data = await fetch(api);
             const json = await data.json();
             const soloqueue = json.find(e => e.queueType === 'RANKED_SOLO_5x5')
             if (!soloqueue.tier) return false;
@@ -205,8 +205,8 @@ module.exports = {
         };
 
         async function flexqueue_api (region, id) {
-            const api = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`;
-            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
+            const api = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
+            const data = await fetch(api);
             const json = await data.json();
             const flexqueue = json.find(e => e.queueType === 'RANKED_FLEX_SR')
             if (!flexqueue.tier) return false;
@@ -221,8 +221,8 @@ module.exports = {
         };
 
         async function history_api (region, id) {
-            const api = `https://${region}.api.riotgames.com/lol/match/v4/matchlists/by-account/${id}`;
-            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
+            const api = `https://${region}.api.riotgames.com/lol/match/v4/matchlists/by-account/${id}?api_key=${process.env.RIOTAPI}`;
+            const data = await fetch(api);
             const json = await data.json();
             const matches = json.matches
             if (matches.length < 10) return false;
@@ -239,8 +239,8 @@ module.exports = {
         };
         
         async function gamedata_api (region, game, name) {
-            const api = `https://${region}.api.riotgames.com/lol/match/v4/matches/${game}`;
-            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
+            const api = `https://${region}.api.riotgames.com/lol/match/v4/matches/${game}?api_key=${process.env.RIOTAPI}`;
+            const data = await fetch(api);
             const json = await data.json();
             const minutes = json.gameDuration/60
             const segs = (minutes-(Math.trunc(minutes)))*60
