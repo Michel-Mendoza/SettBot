@@ -56,23 +56,23 @@ module.exports = {
         var wins = 0; var losses = 0;
         if (last10Games.game1.remake == false) {
             if (last10Games.game1.win == true) wins++; else losses++
-        } else if (last10Games.game2.remake == false) {
+        } if (last10Games.game2.remake == false) {
             if (last10Games.game2.win == true) wins++; else losses++
-        } else if (last10Games.game3.remake == false) {
+        } if (last10Games.game3.remake == false) {
             if (last10Games.game3.win == true) wins++; else losses++
-        } else if (last10Games.game4.remake == false) {
+        } if (last10Games.game4.remake == false) {
             if (last10Games.game4.win == true) wins++; else losses++
-        } else if (last10Games.game5.remake == false) {
+        } if (last10Games.game5.remake == false) {
             if (last10Games.gam51.win == true) wins++; else losses++
-        } else if (last10Games.game6.remake == false) {
+        } if (last10Games.game6.remake == false) {
             if (last10Games.game6.win == true) wins++; else losses++
-        } else if (last10Games.game7.remake == false) {
+        } if (last10Games.game7.remake == false) {
             if (last10Games.game7.win == true) wins++; else losses++
-        } else if (last10Games.game8.remake == false) {
+        } if (last10Games.game8.remake == false) {
             if (last10Games.game8.win == true) wins++; else losses++
-        } else if (last10Games.game9.remake == false) {
+        } if (last10Games.game9.remake == false) {
             if (last10Games.game9.win == true) wins++; else losses++
-        } else if (last10Games.game10.remake == false) {
+        } if (last10Games.game10.remake == false) {
             if (last10Games.game10.win == true) wins++; else losses++
         };
         const champ1Mast = (await championIdentifiers(mastery.one.identifier)).name
@@ -117,7 +117,7 @@ module.exports = {
             .addField('Nivel:', summoner.summoner_lvl, true)
             .addField('Últimas 10 Partidas:', `${wins} Victorias - ${losses} Derrotas`, true)
             .addField('‎', '‎', true)
-            .addField('Campeones con mayor maestría:', `${mastery1}\n${mastery2}${mastery3}`, true)
+            .addField('Campeones con mayor maestría:', `${mastery1}\n${mastery2}\n${mastery3}`, true)
             .addField('Estadísticas en Clasificatoria Solo/Dúo:', soloq==false?'Sin clasificar.':`${soloq.tier} ${soloq.rank}\n${soloq.lp} puntos de liga.\n${winrate}`, true)
             .addField('Última partida:', `${last10Games.game1.remake?`⚙️ **Remake** en ${cola} con ${lastgamechamp.emote} **${lastgamechamp.name}**.`:`${last10Games.game1.win?`✅ **Victoria** en ${cola} con ${lastgamechamp.emote} **${lastgamechamp.name}** KDA: ${last10Games.game1.kda.kills}/${last10Games.game1.kda.deaths}/${last10Games.game1.kda.assists} - Minions: ${last10Games.game1.cs}`:`❌ **Derrota** en ${cola} con ${lastgamechamp.emote} **${lastgamechamp.name}** KDA: ${last10Games.game1.kda.kills}/${last10Games.game1.kda.deaths}/${last10Games.game1.kda.assists} - Minions: ${last10Games.game1.cs}`}`}`)
             .setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL())
@@ -129,7 +129,7 @@ module.exports = {
             .addField('Level:', summoner.summoner_lvl, true)
             .addField('Last 10 Games:', `${wins} Wins - ${losses} Losses`, true)
             .addField('‎', '‎', true)
-            .addField('Champions with better mastery:', `${mastery1}\n${mastery2}${mastery3}`, true)
+            .addField('Champions with better mastery:', `${mastery1}\n${mastery2}\n${mastery3}`, true)
             .addField('Ranked Solo/Duo stats:', soloq==false?'Unranked.':`${soloq.tier} ${soloq.rank}\n${soloq.lp} league points.\n${winrate}`, true)
             .addField('Last game:', `${last10Games.game1.remake?`⚙️ **Remake** in ${cola} with ${lastgamechamp.emote} **${lastgamechamp.name}**.`:`${last10Games.game1.win?`✅ **Victory** in ${cola} with ${lastgamechamp.emote} **${lastgamechamp.name}** KDA: ${last10Games.game1.kda.kills}/${last10Games.game1.kda.deaths}/${last10Games.game1.kda.assists} - Minions: ${last10Games.game1.cs}`:`❌ **Defeat** in ${cola} with ${lastgamechamp.emote} **${lastgamechamp.name}** KDA: ${last10Games.game1.kda.kills}/${last10Games.game1.kda.deaths}/${last10Games.game1.kda.assists} - Minions: ${last10Games.game1.cs}`}`}`)
             .setFooter(`Requested by ${message.author.username}`, message.author.avatarURL())
