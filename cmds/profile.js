@@ -118,7 +118,7 @@ module.exports = {
             .addField('Últimas 10 Partidas:', `${wins} Victorias - ${losses} Derrotas`, true)
             .addField('‎', '‎', true)
             .addField('Campeones con mayor maestría:', `${mastery1} puntos.\n${mastery2} puntos.\n${mastery3} puntos.`, true)
-            .addField('Estadísticas en Clasificatoria Solo/Dúo:', soloq==false?'Sin clasificar.':`${soloq.tier} ${soloq.rank}\n${soloq.lp} puntos de liga.\n${winrate}`, true)
+            .addField('Estadísticas en Clasificatoria Solo/Dúo:', soloq==false?'Sin clasificar.':`${soloq.tier} ${soloq.rank}\n${soloq.lp} Puntos de Liga.\n${winrate}`, true)
             .addField('Última partida:', `${last10Games.game1.remake?`⚙️ **Remake** en ${cola} con ${lastgamechamp.emote} **${lastgamechamp.name}**.`:`${last10Games.game1.win?`✅ **Victoria** en ${cola} con ${lastgamechamp.emote} **${lastgamechamp.name}** KDA: ${last10Games.game1.kda.kills}/${last10Games.game1.kda.deaths}/${last10Games.game1.kda.assists} - Minions: ${last10Games.game1.cs}`:`❌ **Derrota** en ${cola} con ${lastgamechamp.emote} **${lastgamechamp.name}** KDA: ${last10Games.game1.kda.kills}/${last10Games.game1.kda.deaths}/${last10Games.game1.kda.assists} - Minions: ${last10Games.game1.cs}`}`}`)
             .setFooter(`Solicitado por ${message.author.username}`, message.author.avatarURL())
             .setTimestamp(new Date());
@@ -192,7 +192,7 @@ module.exports = {
             const data = await fetch(api);
             const json = await data.json();
             const soloqueue = json.find(e => e.queueType === 'RANKED_SOLO_5x5')
-            if (!soloqueue.tier) return false;
+            if (!soloqueue) return false;
             const tier = soloqueue.tier.toLowerCase();
             return {
                 tier: tier.charAt(0).toUpperCase() + tier.slice(1), 
