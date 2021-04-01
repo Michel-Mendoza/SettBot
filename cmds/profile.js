@@ -81,9 +81,9 @@ module.exports = {
         const champ1Emote = emote(client, (await championIdentifiers(mastery.one.identifier)).id)
         const champ2Emote = emote(client, (await championIdentifiers(mastery.two.identifier)).id)
         const champ3Emote = emote(client, (await championIdentifiers(mastery.three.identifier)).id)
-        const mastery1 = `**1.${champ1Emote} ${champ1Mast} [${mastery.one.level}]** - ${mastery.one.point.toLocaleString('es-ES')}`
-        const mastery2 = `**2.${champ2Emote} ${champ2Mast} [${mastery.two.level}]** - ${mastery.two.point.toLocaleString('es-ES')}`
-        const mastery3 = `**3.${champ3Emote} ${champ3Mast} [${mastery.three.level}]** - ${mastery.three.point.toLocaleString('es-ES')}`
+        const mastery1 = `**1.${champ1Emote} ${champ1Mast} [${mastery.one.level}]** - ${mastery.one.points.toLocaleString('es-ES')}`
+        const mastery2 = `**2.${champ2Emote} ${champ2Mast} [${mastery.two.level}]** - ${mastery.two.points.toLocaleString('es-ES')}`
+        const mastery3 = `**3.${champ3Emote} ${champ3Mast} [${mastery.three.level}]** - ${mastery.three.points.toLocaleString('es-ES')}`
         const winrate = `${Math.trunc((soloq.wins * 100) / (soloq.wins + soloq.losses))}% Winrate`
         var cola = history.last_game.queue
         if (userdata.locale==='Espanol') {
@@ -160,7 +160,6 @@ module.exports = {
             const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
             const data = await fetch(api);
             const json = await data.json();
-            console.log(json)
             if (json.length < 3) return false;
             return {
                 one: {
