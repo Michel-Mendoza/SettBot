@@ -32,9 +32,9 @@ module.exports = {
             if (userdata.locale==='Espanol') return message.reply(unknown_config.Espanol)
         }
         if (newconfig==='español') {
-            userdata.locale = 'Espanol'; userdata.save()
+            userdata.locale = 'Espanol'; userdata.save(); message.reply('El idioma ha cambiado a `Español`.')
         } else if (newconfig==='english') {
-            userdata.locale==='English'
+            userdata.locale==='English'; userdata.save(); message.reply('The language has been set to `English`.')
         }
     }
 }
