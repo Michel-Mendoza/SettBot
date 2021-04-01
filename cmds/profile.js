@@ -160,6 +160,7 @@ module.exports = {
             const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}`;
             const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
+            console.log(json)
             if (json.length < 3) return false;
             return {
                 one: {
