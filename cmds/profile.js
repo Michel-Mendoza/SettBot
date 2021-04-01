@@ -242,9 +242,9 @@ module.exports = {
             const api = `https://${region}.api.riotgames.com/lol/match/v4/matches/${game}?api_key=${process.env.RIOTAPI}`;
             const data = await fetch(api);
             const json = await data.json();
-            const minutes = json.gameDuration/60
-            const segs = (minutes-(Math.trunc(minutes)))*60
-            if (segs < 10) segs = `0${Math.trunc(segs)}`; else segs = Math.trunc(segs);
+            var minutes = json.gameDuration/60
+            var segs = (minutes-(Math.trunc(minutes)))*60
+            if (segs < 10) var segs = `0${Math.trunc(segs)}`; else var segs = Math.trunc(segs);
             const game_duration = ` ${Math.trunc(minutes)}:${segs}`;
             const remake = json.gameDuration<300?true:false;
             const player = json.participantIdentities.find(e => e.player.summonerName === name);
