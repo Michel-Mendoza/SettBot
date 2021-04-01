@@ -15,7 +15,6 @@ module.exports = {
             English: 'you must tell the region and summoner name to use this command. You can also try linking your summoner name to your profile with `s.verify`',
             Espanol: 'debes incluir la región y el nombre de invocador para usar este comando. También puedes probar a vincular tu nombre de invocador a tu perfil con `s.verify`'
         };
-        const headers = {'X-Riot-Token': process.env.RIOTAPI};
         if (!args[1]&&userdata.verified==false) {
             if (userdata.locale==='English') return message.reply(missing_args.English)
             if (userdata.locale==='Espanol') return message.reply(missing_args.Espanol)
@@ -36,21 +35,21 @@ module.exports = {
             if (platform === "LAN") var region = "LA1"
             if (platform === "LAS") var region = "LA2"
         };
-        const summoner = await summoner_api(region, name, headers);
-        const mastery = await mastery_api(region, summoner.summoner_id, headers);
-        const soloq = await soloqueue_api(region, summoner.summoner_id, headers);
-        const history = await history_api(region, summoner.account_id, headers);
+        const summoner = await summoner_api(region, name);
+        const mastery = await mastery_api(region, summoner.summoner_id);
+        const soloq = await soloqueue_api(region, summoner.summoner_id);
+        const history = await history_api(region, summoner.account_id);
         const last10Games = {
-            game1: await gamedata_api(region, history.match_ids[0], summoner.summoner_name, headers),
-            game2: await gamedata_api(region, history.match_ids[1], summoner.summoner_name, headers),
-            game3: await gamedata_api(region, history.match_ids[2], summoner.summoner_name, headers),
-            game4: await gamedata_api(region, history.match_ids[3], summoner.summoner_name, headers),
-            game5: await gamedata_api(region, history.match_ids[4], summoner.summoner_name, headers),
-            game6: await gamedata_api(region, history.match_ids[5], summoner.summoner_name, headers),
-            game7: await gamedata_api(region, history.match_ids[6], summoner.summoner_name, headers),
-            game8: await gamedata_api(region, history.match_ids[7], summoner.summoner_name, headers),
-            game9: await gamedata_api(region, history.match_ids[8], summoner.summoner_name, headers),
-            game10: await gamedata_api(region, history.match_ids[9], summoner.summoner_name, headers),
+            game1: await gamedata_api(region, history.match_ids[0], summoner.summoner_name),
+            game2: await gamedata_api(region, history.match_ids[1], summoner.summoner_name),
+            game3: await gamedata_api(region, history.match_ids[2], summoner.summoner_name),
+            game4: await gamedata_api(region, history.match_ids[3], summoner.summoner_name),
+            game5: await gamedata_api(region, history.match_ids[4], summoner.summoner_name),
+            game6: await gamedata_api(region, history.match_ids[5], summoner.summoner_name),
+            game7: await gamedata_api(region, history.match_ids[6], summoner.summoner_name),
+            game8: await gamedata_api(region, history.match_ids[7], summoner.summoner_name),
+            game9: await gamedata_api(region, history.match_ids[8], summoner.summoner_name),
+            game10: await gamedata_api(region, history.match_ids[9], summoner.summoner_name),
         };
         const lastgamechamp = await championIdentifiers(history.last_game.champion);
         lastgamechamp.emote = emote(client, lastgamechamp.id);
@@ -140,9 +139,9 @@ module.exports = {
             } else if (userdata.locale==='English') {
                 message.reply(embed_english)
             }
-        async function summoner_api (region, name, headers)  {
+        async function summoner_api (region, name)  {
             const api = `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`;
-            const data = await fetch(api, headers);
+            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
             const versions = await fetch(`https://ddragon.leagueoflegends.com/api/versions.json`)
             const version = await versions.json()
@@ -157,9 +156,9 @@ module.exports = {
             };
         };
 
-        async function mastery_api (region, id, headers) {
+        async function mastery_api (region, id) {
             const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}`;
-            const data = await fetch(api, headers);
+            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
             if (json.length < 3) return false;
             return {
@@ -188,9 +187,9 @@ module.exports = {
             };
         };
 
-        async function soloqueue_api (region, id, headers) {
+        async function soloqueue_api (region, id) {
             const api = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`;
-            const data = await fetch(api, headers);
+            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
             const soloqueue = json.find(e => e.queueType === 'RANKED_SOLO_5x5')
             if (!soloqueue.tier) return false;
@@ -204,9 +203,9 @@ module.exports = {
             };
         };
 
-        async function flexqueue_api (region, id, headers) {
+        async function flexqueue_api (region, id) {
             const api = `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`;
-            const data = await fetch(api, headers);
+            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
             const flexqueue = json.find(e => e.queueType === 'RANKED_FLEX_SR')
             if (!flexqueue.tier) return false;
@@ -220,9 +219,9 @@ module.exports = {
             };
         };
 
-        async function history_api (region, id, headers) {
+        async function history_api (region, id) {
             const api = `https://${region}.api.riotgames.com/lol/match/v4/matchlists/by-account/${id}`;
-            const data = await fetch(api, headers);
+            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
             const matches = json.matches
             if (matches.length < 10) return false;
@@ -238,7 +237,7 @@ module.exports = {
             };
         };
         
-        async function gamedata_api (region, game, name, headers) {
+        async function gamedata_api (region, game, name) {
             const api = `https://${region}.api.riotgames.com/lol/match/v4/matches/${game}`;
             const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
@@ -269,7 +268,7 @@ module.exports = {
             };
         };
 
-        async function livegame_api (region, id, headers) {
+        async function livegame_api (region, id) {
     
         };
         
