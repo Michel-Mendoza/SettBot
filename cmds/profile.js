@@ -15,9 +15,7 @@ module.exports = {
             English: 'you must tell the region and summoner name to use this command. You can also try linking your summoner name to your profile with `s.verify`',
             Espanol: 'debes incluir la región y el nombre de invocador para usar este comando. También puedes probar a vincular tu nombre de invocador a tu perfil con `s.verify`'
         };
-        const headers = {
-            'X-Riot-Token': process.env.RIOTAPI
-        };
+        const headers = {'X-Riot-Token': process.env.RIOTAPI};
         if (!args[1]&&userdata.verified==false) {
             if (userdata.locale==='English') return message.reply(missing_args.English)
             if (userdata.locale==='Espanol') return message.reply(missing_args.Espanol)
@@ -163,7 +161,6 @@ module.exports = {
             const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}`;
             const data = await fetch(api, headers);
             const json = await data.json();
-            console.log(json)
             if (json.length < 3) return false;
             return {
                 one: {
@@ -243,7 +240,7 @@ module.exports = {
         
         async function gamedata_api (region, game, name, headers) {
             const api = `https://${region}.api.riotgames.com/lol/match/v4/matches/${game}`;
-            const data = await fetch(api, headers);
+            const data = await fetch(api, {'X-Riot-Token': process.env.RIOTAPI});
             const json = await data.json();
             const minutes = json.gameDuration/60
             const segs = (minutes-(Math.trunc(minutes)))*60
