@@ -40,6 +40,12 @@ module.exports = {
                 var name = args.join(' ')
             };
         } else {
+            database.create(`${mencionado.id}`, {
+                locale: 'English',
+                verified: false,
+                summoner: null,
+                region: null
+            });
             var mentiondata = database.get(`${mencionado.id}`)
             console.log(mentiondata)
             if (mentiondata.verified==false) {
