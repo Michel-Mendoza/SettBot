@@ -3,11 +3,11 @@ const MeowDB = require('meowdb');
 const client = new Discord.Client();
 const fs = require('fs');
 
-const database = new MeowDB({
+client.database = new MeowDB({
     dir: __dirname,
     name: 'database'
 }); 
-client.database = database
+
 client.functions = require('./functions.js');
 
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
