@@ -159,7 +159,6 @@ async function championIdentifiers (identifier) {
 };
 
 async function verifysummoner (client, message, platform, name, id) {
-    const api = `https://${region}.api.riotgames.com/lol/platform/v4/third-party-code/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
     const database = client.database;
     const user = database.get(`${message.author.id}`);
     let knownRegion = [
@@ -171,6 +170,7 @@ async function verifysummoner (client, message, platform, name, id) {
         if (platform === "LAN") var region = "LA1"
         if (platform === "LAS") var region = "LA2"
     };
+    const api = `https://${region}.api.riotgames.com/lol/platform/v4/third-party-code/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
     function generateString(length) {
         const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result = ' ';
