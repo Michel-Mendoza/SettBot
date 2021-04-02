@@ -179,6 +179,7 @@ async function verifysummoner (client, message, platform, name, id) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }; return result.replace(' ','');
     }; const key = generateString(20)
+    console.log(key)
     if (user.locale==='English') {
         const msg = await message.reply(`okay, now enter the config of your league of legends client and go to "Verification". Then, paste this key (\`${key}\`) and press save, and then react with ✅.`)
         await msg.react('✅');
@@ -188,7 +189,8 @@ async function verifysummoner (client, message, platform, name, id) {
             if (collected.first().emoji.name == '✅') {
                 const data = await fetch(api);
                 const check = await data.json();
-                if (check==key) {
+                console.log(check)
+                if (check===key) {
                     message.reply(`account linked successfuly.`)
                     user.verified=true
                     user.summoner=name
@@ -196,7 +198,7 @@ async function verifysummoner (client, message, platform, name, id) {
                     user.save()
                     return
                 }
-                if (!check==key) return message.reply(`verification failed, try again later.`)
+                if (!check===key) return message.reply(`verification failed, try again later.`)
             }
         }).catch(() => {
             message.channel.send('verification failed, try again later.');
