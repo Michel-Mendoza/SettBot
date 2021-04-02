@@ -186,8 +186,7 @@ async function verifysummoner (client, message, platform, name, id) {
         msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '✅', {
             max: 1, time: 120000
         }).then(async collected => {
-            console.log(collected.first().emoji.name == '✅')
-            if (collected.first().emoji.name == '✅') {
+            if (collected.first().emoji.name == '✅'==true) {
                 const data = await fetch(api);
                 const check = await data.json();
                 console.log(check)
