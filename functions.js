@@ -179,7 +179,6 @@ async function verifysummoner (client, message, platform, name, id) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }; return result.replace(' ','');
     }; const key = generateString(20)
-    console.log(key)
     if (user.locale==='English') {
         const msg = await message.reply(`okay, now enter the config of your league of legends client and go to "Verification". Then, paste this key (\`${key}\`) and press save, and then react with ✅.`)
         await msg.react('✅');
