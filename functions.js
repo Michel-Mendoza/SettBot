@@ -191,17 +191,17 @@ async function verifysummoner (client, message, platform, name, id) {
                 const check = await data.json();
                 console.log(check)
                 if (check===key) {
-                    message.reply(`account linked successfuly.`)
+                    message.reply(`Account linked successfuly.`)
                     user.verified=true
                     user.summoner=name
                     user.region=region
                     user.save()
                     return
                 }
-                if (!check===key) return message.reply(`verification failed, try again later.`)
+                if (!check===key) return message.reply(`Verification failed, try again later.`)
             }
         }).catch(() => {
-            message.channel.send('verification failed, try again later.');
+            message.channel.send('Verification failed, try again later.');
     });
     };
     if (user.locale==='Espanol') {
@@ -213,18 +213,19 @@ async function verifysummoner (client, message, platform, name, id) {
             if (collected.first().emoji.name == '✅') {
                 const data = await fetch(api);
                 const check = await data.json();
+                console.log(check)
                 if (check==key) {
-                    message.reply(`cuenta linkeada correctamente.`)
+                    message.reply(`Cuenta linkeada correctamente.`)
                     user.verified=true
                     user.summoner=name
                     user.region=region
                     user.save()
                     return
                 }
-                if (!check==key) return message.reply(`la verificación ha fallado, prueba de nuevo más tarde.`)
+                if (!check==key) return message.reply(`La verificación ha fallado, prueba de nuevo más tarde.`)
             }
         }).catch(() => {
-            message.reply('la verificación ha fallado, prueba de nuevo más tarde.');
+            message.reply('La verificación ha fallado, prueba de nuevo más tarde.');
     });
     };
     
