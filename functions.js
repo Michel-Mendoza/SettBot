@@ -189,7 +189,6 @@ async function verifysummoner (client, message, platform, name, id) {
             if (collected.first().emoji.name == '✅'==true) {
                 const data = await fetch(api);
                 const check = await data.json();
-                console.log(check)
                 if (check===key) {
                     message.reply(`Account linked successfuly.`)
                     user.verified=true
@@ -211,7 +210,6 @@ async function verifysummoner (client, message, platform, name, id) {
             if (collected.first().emoji.name == '✅') {
                 const data = await fetch(api);
                 const check = await data.json();
-                console.log(check)
                 if (check===key) {
                     message.reply(`Cuenta linkeada correctamente.`)
                     user.verified=true
