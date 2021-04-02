@@ -198,7 +198,6 @@ async function verifysummoner (client, message, platform, name, id) {
                     user.save()
                     return
                 }
-                if (!check===key) return message.reply(`Verification failed, try again later.`)
             }
         }).catch(() => {
             message.channel.send('Verification failed, try again later.');
