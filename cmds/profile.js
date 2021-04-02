@@ -40,6 +40,16 @@ module.exports = {
             if (platform === "LAN") var region = "LA1"
             if (platform === "LAS") var region = "LA2"
         };
+        
+        let knownPlatform = [
+            "EUW1", "EUN1", "NA1", "LA2", "LA1"
+        ].includes(region); if (knownPlatform == true) {
+            if (region === "EUW1") var platform = "EUW"
+            if (region === "EUN1") var platform = "EUNE"
+            if (region === "NA1") var platform = "NA"
+            if (region === "LA1") var platform = "LAS"
+            if (region === "LA2") var platform = "LA"
+        };
 
         const summoner = await functions.summoner_api(region, name); if (summoner==false) {
             if (userdata.locale==='English') return message.reply(`the specified summoner doesn't exist for that region.`);
