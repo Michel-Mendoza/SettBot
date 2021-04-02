@@ -41,6 +41,7 @@ module.exports = {
             };
         } else {
             var mentiondata = database.get(`${mencionado.id}`)
+            console.log(mentiondata)
             if (mentiondata.verified==false) {
                 if (userdata.locale==='English') return message.reply(mention_unverified.English)
                 if (userdata.locale==='Espanol') return message.reply(mention_unverified.Espanol)
