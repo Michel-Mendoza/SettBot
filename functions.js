@@ -198,10 +198,9 @@ async function verifysummoner (client, message, platform, name, id) {
                     user.save()
                     return
                 }
+                if (!check===key) return message.reply(`Verification failed, try again later.`)
             }
-        }).catch(() => {
-            message.channel.send('Verification failed, try again later.');
-    });
+        }).catch(err => console.error(err));
     };
     if (user.locale==='Espanol') {
         const msg = await message.reply(`vale, ahora ve a la configuración de tu cliente de League of Legends y ve a la pestaña "Verificación". Después, introduce esta clave (\`${key}\`) y pulsa guardar, después reacciona con ✅.`)
