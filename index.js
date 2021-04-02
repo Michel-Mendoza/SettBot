@@ -8,7 +8,7 @@ const database = new MeowDB({
     name: 'database'
 }); 
 client.database = database
-client.functions = require('../functions.js');
+client.functions = require('./functions.js');
 
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
