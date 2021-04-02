@@ -10,26 +10,46 @@ module.exports = {
             summoner: null,
             region: null
         });
+    
+        let mencionado = message.mentions.members.first();
         
-        const userdata = database.get(`${message.author.id}`)
         const missing_args = {
             English: 'you must tell the region and summoner name to use this command. You can also try linking your summoner name to your profile with `s.verify`',
             Espanol: 'debes incluir la región y el nombre de invocador para usar este comando. También puedes probar a vincular tu nombre de invocador a tu perfil con `s.verify`'
         };
-
-        if (!args[1]&&userdata.verified==false) {
-            if (userdata.locale==='English') return message.reply(missing_args.English)
-            if (userdata.locale==='Espanol') return message.reply(missing_args.Espanol)
+        
+        const mention_unverified = {
+            English: 'the user you entered is not verified',
+            Espanol: 'el usuario que has introducido no está verificado'
         };
 
-        if (!args[1]&&userdata.verified==true) {
-            var name = userdata.summoner;
-            var region = userdata.region.toUpperCase();
-            var platform = ''
-        } else if (args[1]) {
-            var platform = args.shift().toUpperCase();
-            var name = args.join(' ')
-        };
+        const userdata = database.get(`${message.author.id}`)
+
+        if (!mencionado) {
+            if (!args[1]&&userdata.verified==false) {
+                if (userdata.locale==='English') return message.reply(missing_args.English)
+                if (userdata.locale==='Espanol') return message.reply(missing_args.Espanol)
+            };
+    
+            if (!args[1]&&userdata.verified==true) {
+                var name = userdata.summoner;
+                var region = userdata.region.toUpperCase();
+                var platform = ''
+            } else if (args[1]) {
+                var platform = args.shift().toUpperCase();
+                var name = args.join(' ')
+            };
+        } else {
+            var mentiondata = database.get(`${mencionado.id}`)
+            if (mentiondata.verified==false) {
+                if (userdata.locale==='English') return message.reply(mention_unverified.English)
+                if (userdata.locale==='Espanol') return message.reply(mention_unverified.Espanol)
+            } else if (mentiondata.verified==true) {
+                var name = mentiondata.summoner;
+                var region = mentiondata.region.toUpperCase();
+                var platform = ''
+            }
+        }
 
         let knownRegion = [
             "EUW", "EUNE", "NA", "LAS", "LAN"
@@ -40,7 +60,7 @@ module.exports = {
             if (platform === "LAN") var region = "LA1"
             if (platform === "LAS") var region = "LA2"
         };
-        
+
         let knownPlatform = [
             "EUW1", "EUN1", "NA1", "LA2", "LA1"
         ].includes(region); if (knownPlatform == true) {
