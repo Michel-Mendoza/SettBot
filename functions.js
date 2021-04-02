@@ -186,6 +186,7 @@ async function verifysummoner (client, message, platform, name, id) {
         msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '✅', {
             max: 1, time: 120000
         }).then(async collected => {
+            console.log(collected.first().emoji.name == '✅')
             if (collected.first().emoji.name == '✅') {
                 const data = await fetch(api);
                 const check = await data.json();
@@ -214,7 +215,7 @@ async function verifysummoner (client, message, platform, name, id) {
                 const data = await fetch(api);
                 const check = await data.json();
                 console.log(check)
-                if (check==key) {
+                if (check===key) {
                     message.reply(`Cuenta linkeada correctamente.`)
                     user.verified=true
                     user.summoner=name
@@ -222,7 +223,7 @@ async function verifysummoner (client, message, platform, name, id) {
                     user.save()
                     return
                 }
-                if (!check==key) return message.reply(`La verificación ha fallado, prueba de nuevo más tarde.`)
+                if (!check===key) return message.reply(`La verificación ha fallado, prueba de nuevo más tarde.`)
             }
         }).catch(() => {
             message.reply('La verificación ha fallado, prueba de nuevo más tarde.');
