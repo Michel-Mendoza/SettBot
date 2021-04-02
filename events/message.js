@@ -45,5 +45,3 @@ module.exports = {
         };  
 	},
 };
-
-client.functions = require('../functions.js');
