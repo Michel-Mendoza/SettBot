@@ -24,7 +24,8 @@ module.exports = {
 
         if (!args[1]&&userdata.verified==true) {
             var name = userdata.summoner;
-            var platform = userdata.region.toUpperCase();
+            var region = userdata.region.toUpperCase();
+            var platform = ''
         } else if (args[1]) {
             var platform = args.shift().toUpperCase();
             var name = args.join(' ')
