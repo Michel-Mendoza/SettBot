@@ -14,9 +14,21 @@ module.exports = {
 	name: 'message',
 	async execute(message, client) {
         if (message.author.bot) return;
-        const owner = await client.users.fetch('797254248387444769');
-		owner.send(`\`@${message.author.tag} - ${message.guild.name} - #${message.channel.name}:\` ${message.content}`);
         if (!message.content.startsWith(prefix)) return;
+
+        const database = client.database
+        database.create(`${message.author.id}`, {
+            locale: 'English',
+            verified: false,
+            summoner: null,
+            region: null
+        });
+
+        const userdata = database.get(`${message.author.id}`)
+        const errormessage = {
+            English: 'an internal error ocurred while running the command. Try again later.',
+            Espanol: 'ha ocurrido un error interno al ejecutar este comando. Prueba de nuevo más tarde.'
+        };
 
         const args = message.content.slice(prefix.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
@@ -27,8 +39,11 @@ module.exports = {
         try {
             cmds.get(command).execute(message, args, client);
         } catch (error) {
-            message.reply('ha ocurrido un error interno al ejecutar este comando. Prueba de nuevo más tarde.');
+            if (userdata.locale==='English') return message.reply(errormessage.English);
+            if (userdata.locale==='Espanol') return message.reply(errormessage.Espanol);
             console.error(error);
         };  
 	},
 };
+
+client.functions = require('../functions.js');
