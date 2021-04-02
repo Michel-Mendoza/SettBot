@@ -20,9 +20,13 @@ async function summoner_api (region, name)  {
 async function mastery_api (region, id) {
     const api = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
     const data = await fetch(api);
+    const api2 = `https://${region}.api.riotgames.com/lol/champion-mastery/v4/scores/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
+    const data2 = await fetch(api2);
+    const json2 = await data2.json();
     const json = await data.json();
     if (json.length < 3) return false;
     return {
+        score: json2,
         one: {
             identifier: json[0].championId,
             level: json[0].championLevel,
