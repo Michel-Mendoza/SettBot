@@ -299,7 +299,7 @@ module.exports = {
 
         function emote (client, name) {
             let emotes = client.emojis.cache
-            let emote = emotes.find(e => e.name.toLowerCase() === name.toLowerCase())
+            let emote = emotes.find(e => e.name === name)
             return `<:${emote.name}:${emote.id}>`
         };
     }
