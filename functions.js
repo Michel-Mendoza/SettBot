@@ -158,6 +158,76 @@ async function championIdentifiers (identifier) {
     };
 };
 
+async function verifysummoner (client, message, platform, name, id) {
+    const api = `https://${region}.api.riotgames.com/lol/platform/v4/third-party-code/by-summoner/${id}?api_key=${process.env.RIOTAPI}`;
+    const database = client.database;
+    const user = database.get(`${message.author.id}`);
+    let knownRegion = [
+        "EUW", "EUNE", "NA", "LAS", "LAN"
+    ].includes(platform); if (knownRegion == true) {
+        if (platform === "EUW") var region = "EUW1"
+        if (platform === "EUNE") var region = "EUN1"
+        if (platform === "NA") var region = "NA1"
+        if (platform === "LAN") var region = "LA1"
+        if (platform === "LAS") var region = "LA2"
+    };
+    function generateString(length) {
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = ' ';
+        const charactersLength = characters.length;
+        for ( let i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }; return result.replace(' ','');
+    }; const key = generateString(20)
+    if (user.locale==='English') {
+        const msg = await message.reply(`okay, now enter the config of your league of legends client and go to "Verification". Then, paste this key (\`${key}\`) and press save, and then react with ✅.`)
+        await msg.react('✅');
+        msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '✅', {
+            max: 1, time: 120000
+        }).then(async collected => {
+            if (collected.first().emoji.name == '✅') {
+                const data = await fetch(api);
+                const check = await data.json();
+                if (check==key) {
+                    message.reply(`account linked successfuly.`)
+                    user.verified=true
+                    user.summoner=name
+                    user.region=region
+                    user.save()
+                    return
+                }
+                if (!check==key) return message.reply(`verification failed, try again later.`)
+            }
+        }).catch(() => {
+            message.channel.send('verification failed, try again later.');
+    });
+    };
+    if (user.locale==='Espanol') {
+        const msg = await message.reply(`vale, ahora ve a la configuración de tu cliente de League of Legends y ve a la pestaña "Verificación". Después, introduce esta clave (\`${key}\`) y pulsa guardar, después reacciona con ✅.`)
+        await msg.react('✅');
+        msg.awaitReactions((reaction, user) => user.id == message.author.id && reaction.emoji.name == '✅', {
+            max: 1, time: 120000
+        }).then(async collected => {
+            if (collected.first().emoji.name == '✅') {
+                const data = await fetch(api);
+                const check = await data.json();
+                if (check==key) {
+                    message.reply(`cuenta linkeada correctamente.`)
+                    user.verified=true
+                    user.summoner=name
+                    user.region=region
+                    user.save()
+                    return
+                }
+                if (!check==key) return message.reply(`la verificación ha fallado, prueba de nuevo más tarde.`)
+            }
+        }).catch(() => {
+            message.reply('la verificación ha fallado, prueba de nuevo más tarde.');
+    });
+    };
+    
+};
+
 function emote (client, name) {
     let emotes = client.emojis.cache
     let emote = emotes.find(e => e.name === name)
@@ -165,5 +235,5 @@ function emote (client, name) {
 };
 
 module.exports = {
-    summoner_api, mastery_api, soloqueue_api, flexqueue_api, history_api, gamedata_api, livegame_api, championIdentifiers, emote
+    summoner_api, mastery_api, soloqueue_api, flexqueue_api, history_api, gamedata_api, livegame_api, championIdentifiers, emote, verifysummoner
 }
