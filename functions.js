@@ -160,7 +160,7 @@ module.exports = {
         }
     },
 
-    gamedata_api: async (region, game, name) => {
+    gamedata_api: async (region, game, account_id) => {
         const api = `https://${region}.api.riotgames.com/lol/match/v4/matches/${game}?api_key=${process.env.RIOTAPI}`;
         const data = await fetch(new URL(api));
         const json = await data.json();
@@ -169,7 +169,7 @@ module.exports = {
         if (segs < 10) var segs = `0${Math.trunc(segs)}`; else var segs = Math.trunc(segs);
         const game_duration = ` ${Math.trunc(minutes)}:${segs}`;
         const remake = json.gameDuration<300?true:false;
-        const player = json.participantIdentities.find(e => e.player.summonerName === name);
+        const player = json.participantIdentities.find(e => e.player.accountId == account_id || e.player.currentAccountId == account_id);
         const participant = json.participants[player.participantId - 1];
         return {
             remake, game_duration, timestamp: json.gameDuration*1000,
@@ -196,7 +196,7 @@ module.exports = {
         const data = await fetch(new URL(api));
         const json = await data.json();
         if (!json.gameId) return 
-        let participant = json.participants.find(e => e.summonerId === `${id}`);
+        let participant = json.participants.find(e => e.summonerId == id);
         return {
             queue: json.gameQueueConfigId,
             champion: participant.championId

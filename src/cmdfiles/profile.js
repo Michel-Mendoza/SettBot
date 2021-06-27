@@ -33,16 +33,16 @@ module.exports = {
         const mainrole = await functions.main_role(region, summoner.account_id);
         const livegame = await functions.livegame_api(region, summoner.summoner_id);
         const last10Games = {
-            game1: await functions.gamedata_api(region, history.match_ids[0], summoner.summoner_name),
-            game2: await functions.gamedata_api(region, history.match_ids[1], summoner.summoner_name),
-            game3: await functions.gamedata_api(region, history.match_ids[2], summoner.summoner_name),
-            game4: await functions.gamedata_api(region, history.match_ids[3], summoner.summoner_name),
-            game5: await functions.gamedata_api(region, history.match_ids[4], summoner.summoner_name),
-            game6: await functions.gamedata_api(region, history.match_ids[5], summoner.summoner_name),
-            game7: await functions.gamedata_api(region, history.match_ids[6], summoner.summoner_name),
-            game8: await functions.gamedata_api(region, history.match_ids[7], summoner.summoner_name),
-            game9: await functions.gamedata_api(region, history.match_ids[8], summoner.summoner_name),
-            game10: await functions.gamedata_api(region, history.match_ids[9], summoner.summoner_name),
+            game1: await functions.gamedata_api(region, history.match_ids[0], summoner.account_id),
+            game2: await functions.gamedata_api(region, history.match_ids[1], summoner.account_id),
+            game3: await functions.gamedata_api(region, history.match_ids[2], summoner.account_id),
+            game4: await functions.gamedata_api(region, history.match_ids[3], summoner.account_id),
+            game5: await functions.gamedata_api(region, history.match_ids[4], summoner.account_id),
+            game6: await functions.gamedata_api(region, history.match_ids[5], summoner.account_id),
+            game7: await functions.gamedata_api(region, history.match_ids[6], summoner.account_id),
+            game8: await functions.gamedata_api(region, history.match_ids[7], summoner.account_id),
+            game9: await functions.gamedata_api(region, history.match_ids[8], summoner.account_id),
+            game10: await functions.gamedata_api(region, history.match_ids[9], summoner.account_id),
         };
         const lastgamechamp = await functions.championIdentifiers(history.last_game.champion);
         lastgamechamp.emote = functions.emote(client, lastgamechamp.id);
