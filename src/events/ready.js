@@ -4,8 +4,8 @@ module.exports = {
     once: true,
 	async execute (client) {
         client.once('ready', async () => {
-            const servers = await client.guilds.cache.size
-            const users = await client.users.cache.size
+            let servers = await client.guilds.cache.size
+            let users = await client.users.cache.size
             
             let date = new Date()
     
@@ -34,6 +34,7 @@ module.exports = {
             await client.user.setActivity(act[index], {type: 'WATCHING'});
 
             setInterval(async function() {
+                servers = await client.guilds.cache.size; users = await client.users.cache.size;
                 if (index == act.length) {
                     index = 0; await client.user.setActivity(act[index], {type: 'WATCHING'});
                 } else {
