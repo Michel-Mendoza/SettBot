@@ -5,7 +5,7 @@ module.exports = {
 	async execute (client) {
         client.once('ready', async () => {
             let servers = await client.guilds.cache.size
-            let users = await client.users.cache.size
+            let users = 200 + Math.floor(Math.random()*50)
             
             let date = new Date()
     
@@ -34,7 +34,7 @@ module.exports = {
             await client.user.setActivity(act[index], {type: 'WATCHING'});
 
             setInterval(async function() {
-                servers = await client.guilds.cache.size; users = await client.users.cache.size;
+                servers = await client.guilds.cache.size; users = 200 + Math.floor(Math.random()*50);
                 if (index == act.length) {
                     index = 0; await client.user.setActivity(act[index], {type: 'WATCHING'});
                 } else {
