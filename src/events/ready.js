@@ -23,8 +23,8 @@ module.exports = {
             version = await version.json();
 
             let act = [
-                `las notas del parche ${version[0]}.`,
-                `a ${servers} y a ${users} usuarios.`,
+                `las notas del parche ${version[0]}`,
+                `a ${servers} y a ${users} usuarios`,
                 `la documentación de Discord.JS`,
                 `cientos de partidas y de perfiles`,
                 `la lista de bots KlouCord.`,
