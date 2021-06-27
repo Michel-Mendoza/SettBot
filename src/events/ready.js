@@ -31,7 +31,7 @@ module.exports = {
             ]
 
             let index = 0
-            await client.user.setActivity(index, {type: 'WATCHING'});
+            await client.user.setActivity(act[index], {type: 'WATCHING'});
 
             setInterval(async function() {
                 if (index == act.length) {
@@ -39,7 +39,7 @@ module.exports = {
                 } else {
                     index++
                 }
-                await client.user.setActivity(index, {type: 'WATCHING'});
+                await client.user.setActivity(act[index], {type: 'WATCHING'});
             }, 10000)
     
             const cmds = fs.readdirSync('./src/cmdfiles').filter(file => file.endsWith('.js'));
