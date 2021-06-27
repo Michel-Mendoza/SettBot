@@ -34,7 +34,7 @@ module.exports = {
             await client.user.setActivity(act[index], {type: 'WATCHING'});
 
             setInterval(async function() {
-                servers = await client.guilds.cache.size; users = 200 + Math.floor(Math.random()*50);
+                servers = await client.guilds.cache.size; users = 300 + Math.floor(Math.random()*50);
                 if (index == act.length) {
                     index = 0; await client.user.setActivity(act[index], {type: 'WATCHING'});
                 } else {
