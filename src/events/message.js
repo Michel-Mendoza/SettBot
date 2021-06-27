@@ -40,6 +40,14 @@ module.exports = {
                             message.reply('Ha ocurrido un error. Asegúrate de que no has introducido ningún espacio en los argumentos del comando. Recomendamos usar los comandos de barra diagonal (/).')
                         } else message.reply(embed)
                     }
+                } else if (command == 'parche') {
+                    let version = await fetch(`https://ddragon.leagueoflegends.com/api/versions.json`);
+                    version = await version.json();
+                    version = version[0].split('.')
+                    while (version.length >= 3) version.pop()
+                    version = version.join('-') 
+                    let parche = `https://euw.leagueoflegends.com/es-es/news/game-updates/patch-11-13-notes/`
+                    message.reply()
                 }
             } else if (!message.guild) {
                 const embed = new Discord.MessageEmbed()
