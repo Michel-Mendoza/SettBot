@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 module.exports = {
-    name: "help",
+    name: "parche",
     description: "Muestra las notas del parche actual.",
     options: [], msg: async (args, interaction, client) => {
         let version = await fetch(`https://ddragon.leagueoflegends.com/api/versions.json`);
