@@ -20,7 +20,7 @@ module.exports = {
             };
 
             let version = await fetch(`https://ddragon.leagueoflegends.com/api/versions.json`);
-            version = await versions.json();
+            version = await version.json();
 
             let act = [
                 `las notas del parche ${version[0]}.`,
