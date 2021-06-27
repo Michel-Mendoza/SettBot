@@ -46,8 +46,8 @@ module.exports = {
                     version = version[0].split('.')
                     while (version.length >= 3) version.pop()
                     version = version.join('-') 
-                    let parche = `https://euw.leagueoflegends.com/es-es/news/game-updates/patch-11-13-notes/`
-                    message.reply()
+                    let parche = `https://euw.leagueoflegends.com/es-es/news/game-updates/patch-${version}-notes/`
+                    message.reply(parche)
                 }
             } else if (!message.guild) {
                 const embed = new Discord.MessageEmbed()
