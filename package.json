@@ -1,5 +1,5 @@
 {
-  "name": "sett-v3",
+  "name": "settbot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,10 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.1",
-    "meowdb": "^2.2.0"
+    "axios": "^0.21.1",
+    "beautify": "0.0.8",
+    "discord.js": "^12.5.3",
+    "node-fetch": "^2.6.1",
+    "public-ip": "^4.0.4",
+    "ytdl-core": "^4.8.2"
   }
 }
