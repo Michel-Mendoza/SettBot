@@ -30,11 +30,15 @@ module.exports = {
                 `la lista de bots KlouCord.`,
             ]
 
-            var actID = act[Math.floor(Math.random() * Math.floor(act.length))];
-            await client.user.setActivity(actID, {type: 'WATCHING'});
+            let index = 0
+            await client.user.setActivity(index, {type: 'WATCHING'});
 
             setInterval(async function() {
-                var actID = act[Math.floor(Math.random() * Math.floor(act.length))];
+                if (index == act.length) {
+                    index = 0
+                } else {
+                    index++
+                }
                 await client.user.setActivity(actID, {type: 'WATCHING'});
             }, 10000)
     
