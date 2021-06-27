@@ -39,7 +39,7 @@ module.exports = {
                 } else {
                     index++
                 }
-                await client.user.setActivity(actID, {type: 'WATCHING'});
+                await client.user.setActivity(index, {type: 'WATCHING'});
             }, 10000)
     
             const cmds = fs.readdirSync('./src/cmdfiles').filter(file => file.endsWith('.js'));
