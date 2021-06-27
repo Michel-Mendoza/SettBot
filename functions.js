@@ -291,16 +291,16 @@ module.exports = {
         const main_champ = await client.functions.main_champs(region, summoner1.account_id)
         const soloq = await client.functions.soloqueue_api(region, summoner1.summoner_id);
         const last10Games1 = {
-            game1: await client.functions.gamedata_api(region, history1.match_ids[0], summoner1.summoner_name),
-            game2: await client.functions.gamedata_api(region, history1.match_ids[1], summoner1.summoner_name),
-            game3: await client.functions.gamedata_api(region, history1.match_ids[2], summoner1.summoner_name),
-            game4: await client.functions.gamedata_api(region, history1.match_ids[3], summoner1.summoner_name),
-            game5: await client.functions.gamedata_api(region, history1.match_ids[4], summoner1.summoner_name),
-            game6: await client.functions.gamedata_api(region, history1.match_ids[5], summoner1.summoner_name),
-            game7: await client.functions.gamedata_api(region, history1.match_ids[6], summoner1.summoner_name),
-            game8: await client.functions.gamedata_api(region, history1.match_ids[7], summoner1.summoner_name),
-            game9: await client.functions.gamedata_api(region, history1.match_ids[8], summoner1.summoner_name),
-            game10: await client.functions.gamedata_api(region, history1.match_ids[9], summoner1.summoner_name),
+            game1: await client.functions.gamedata_api(region, history1.match_ids[0], summoner1.account_id),
+            game2: await client.functions.gamedata_api(region, history1.match_ids[1], summoner1.account_id),
+            game3: await client.functions.gamedata_api(region, history1.match_ids[2], summoner1.account_id),
+            game4: await client.functions.gamedata_api(region, history1.match_ids[3], summoner1.account_id),
+            game5: await client.functions.gamedata_api(region, history1.match_ids[4], summoner1.account_id),
+            game6: await client.functions.gamedata_api(region, history1.match_ids[5], summoner1.account_id),
+            game7: await client.functions.gamedata_api(region, history1.match_ids[6], summoner1.account_id),
+            game8: await client.functions.gamedata_api(region, history1.match_ids[7], summoner1.account_id),
+            game9: await client.functions.gamedata_api(region, history1.match_ids[8], summoner1.account_id),
+            game10: await client.functions.gamedata_api(region, history1.match_ids[9], summoner1.account_id),
         };
         var wins1 = 0; var losses1 = 0;
         if (last10Games1.game1.remake == false) {
