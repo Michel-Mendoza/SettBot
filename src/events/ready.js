@@ -55,7 +55,7 @@ module.exports = {
                 });
                 client.api.applications(client.user.id).guilds('811691705551683634').commands.post({
                     data: {
-                        name: `test_${interaction_data.name}`,
+                        name: `${interaction_data.name}test`,
                         description: interaction_data.description,
                         options: interaction_data.options
                     }
