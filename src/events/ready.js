@@ -1,15 +1,11 @@
-const fetch = require('node-fetch')
-const publicIp = require('public-ip');
+const fetch = require('node-fetch');
 const fs = require ('fs');
-const Discord = require('discord.js');
-const beautify = require('beautify');
 module.exports = {
     once: true,
 	async execute (client) {
         client.once('ready', async () => {
-            client.user.setActivity(`Work In Progress`, {type: 'WATCHING',})
             const servers = await client.guilds.cache.size
-            const log_channel = await client.channels.cache.get('843799970997862472')
+            const users = await client.users.cache.size
             
             let date = new Date()
     
@@ -18,10 +14,26 @@ module.exports = {
             let year = date.getFullYear()
     
             if(month < 10){
-                var _date = (`${day}-0${month}-${year}`)
+                date = (`${day}-0${month}-${year}`)
             } else {
-                var _date =(`${day}-${month}-${year}`)
+                date =(`${day}-${month}-${year}`)
             };
+
+            let version = await fetch(`https://ddragon.leagueoflegends.com/api/versions.json`);
+            version = await versions.json();
+
+            let act = [
+                `las notas del parche ${version[0]}.`,
+                `a ${servers} y a ${users} usuarios.`,
+                `la documentación de Discord.JS`,
+                `cientos de partidas y de perfiles`,
+                `la lista de bots KlouCord.`,
+            ]
+
+            setInterval(async function() {
+                var actID = Math.floor(Math.random() * Math.floor(act.length));
+                await client.user.setActivity(actID, {type: 'WATCHING'});
+            }, 10000)
     
             const cmds = fs.readdirSync('./src/cmdfiles').filter(file => file.endsWith('.js'));
     
@@ -42,13 +54,6 @@ module.exports = {
                     }
                 });
             };
-            let commands = await client.api.applications(client.user.id).commands.get()
-            let cmds_json = JSON.stringify(commands, ['id', 'name'])
-            let cmds_string = beautify(cmds_json, {format: 'json'})
-            const embed = new Discord.MessageEmbed()
-                .setDescription(`Bot iniciado. - IP: ${await publicIp.v4()}\nEstoy en ${servers} servers.\nFecha: ${_date}\nComandos:\n\`\`\`json\n${cmds_string}\`\`\``)
-                .setColor('ORANGE')
-            log_channel.send(embed);
         })
 	},
 };  
