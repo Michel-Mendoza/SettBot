@@ -15,6 +15,19 @@ module.exports = {
 
         let functions = client.functions
 
+        platform = (region) => {
+            if (region=='EUW1') return 'EUW';
+            if (region=='EUN1') return 'EUNE';
+            if (region=='NA1') return 'NA';
+            if (region=='LA1') return 'LAN';
+            if (region=='LA2') return 'LAS';
+            if (region=='KR') return 'KR';
+            if (region=='JP1') return 'JP';
+            if (region=='OC1') return 'OCE';
+            if (region=='BR1') return 'BR';
+            else return region;
+        }
+
         const summoner = await functions.summoner_api(region, name); if (summoner==false) {
             return `El invocador que buscas no existe en ${platform(region)}.`
         };
