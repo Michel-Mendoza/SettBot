@@ -278,10 +278,9 @@ module.exports = {
 
     emote: (client, name) => {
         let emotes = client.emojis.cache
-        console.log(name)
-        let emote = emotes.find(e => e.name === name)
+        let emote = emotes.find(e => e.name === name.split("'").join(''))
         if (!emote) {
-            emote = emotes.find(e => e.name == name)
+            emote = emotes.find(e => e.name == name.split("'").join(''))
         }
         return `<:${emote.name}:${emote.id}>`
     },
