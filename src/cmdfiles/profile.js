@@ -29,8 +29,9 @@ module.exports = {
     
         const mastery = await functions.mastery_api(region, summoner.summoner_id);
         const soloq = await functions.soloqueue_api(region, summoner.summoner_id);
-        const history = await functions.history_api(region, summoner.account_id);
-        if (history == false) let gametxt = 'No hay datos.'
+        const history = await functions.history_api(region, summoner.account_id); if (history == false) {
+            var gametxt = 'No hay datos.'
+        };
         const mainrole = await functions.main_role(region, summoner.account_id);
         const livegame = await functions.livegame_api(region, summoner.summoner_id);
         const last10Games = {
