@@ -67,10 +67,10 @@ module.exports = {
                 if (last10Games.game10.win == true) wins++; else losses++
             };
             var lastgamechamp = await functions.championIdentifiers(history.last_game.champion);
+            lastgamechamp.emote = functions.emote(client, lastgamechamp.id);
         };
         const mainrole = await functions.main_role(region, summoner.account_id);
         const livegame = await functions.livegame_api(region, summoner.summoner_id);
-        lastgamechamp.emote = functions.emote(client, lastgamechamp.id);
     
         const champ1Mast = (await functions.championIdentifiers(mastery.one.identifier)).name;
         const champ2Mast = (await functions.championIdentifiers(mastery.two.identifier)).name;
