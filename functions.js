@@ -328,7 +328,7 @@ module.exports = {
         let deaths = last10Games1.game1.kda.deaths +last10Games1.game2.kda.deaths +last10Games1.game3.kda.deaths +last10Games1.game4.kda.deaths +last10Games1.game5.kda.deaths +last10Games1.game6.kda.deaths +last10Games1.game7.kda.deaths +last10Games1.game8.kda.deaths +last10Games1.game9.kda.deaths +last10Games1.game10.kda.deaths
         let assists = last10Games1.game1.kda.assists +last10Games1.game2.kda.assists +last10Games1.game3.kda.assists +last10Games1.game4.kda.assists +last10Games1.game5.kda.assists +last10Games1.game6.kda.assists +last10Games1.game7.kda.assists +last10Games1.game8.kda.assists +last10Games1.game9.kda.assists +last10Games1.game10.kda.assists
         let winrate = `${Math.trunc((soloq.wins * 100) / (soloq.wins + soloq.losses))}% WR (${soloq.wins+soloq.losses} partidas.)`
-        let champ = (await client.functions.championIdentifiers(parseInt(main_champ[0], 10))).name;
+        let champ = (await client.functions.championIdentifiers(parseInt(main_champ[0], 10))).id;
         let champtext = `Campeón más jugado recientemente: ${client.functions.emote(client, (await client.functions.championIdentifiers(parseInt(main_champ[0], 10))).name)} **${champ} (${main_champ[1]} partidas)**`
         if (soloq == false) var txt = `<:UnrankedEmote:857652860740042792> **Sin Clasificar** - Últimas 10 partidas: **${wins1}W / ${losses1}L**\n ${champtext}`
         else var txt = `${client.functions.emote(client, `${soloq.tier}Emote`)} **${soloq.tier} ${soloq.rank}** - ${winrate} - Últimas 10 partidas: **${wins1}W / ${losses1}L**\n ${champtext}`
