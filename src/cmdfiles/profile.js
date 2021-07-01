@@ -29,7 +29,7 @@ module.exports = {
     
         const mastery = await functions.mastery_api(region, summoner.summoner_id);
         const soloq = await functions.soloqueue_api(region, summoner.summoner_id);
-        const history = await functions.history_api(region, summoner.account_id); if (history == false) return `No hay suficientes datos para mostrar.`
+        const history = await functions.history_api(region, summoner.account_id); if (history == false) var gametxt = `No hay datos.`
         var last10Games = {
             game1: await functions.gamedata_api(region, history.match_ids[0], summoner.account_id),
             game2: await functions.gamedata_api(region, history.match_ids[1], summoner.account_id),
@@ -156,11 +156,11 @@ module.exports = {
             .setDescription(`Esto es lo que he encontrado:\nRole preferido del jugador: **${mainrole.main_role} (${mainrole.games_main} partidas recientes)**`)
             .addField('Nivel:', summoner.summoner_lvl, true)
             .addField('Puntuación de maestría:', `${mastery.score} puntos en total.`, true)
-            .addField('Últimas 10 partidas:', `${gametxt=='No hay datos.'?gametxt:`${wins}W / ${losses}L`}`, true)
+            .addField('Últimas 10 partidas:', `${gametxt=='No hay datos.'?'No suficientes datos para mostrar.':`${wins}W / ${losses}L`}`, true)
             .addField('Campeones con mayor maestría:', `${mastery1} puntos.\n${mastery2} puntos.\n${mastery3} puntos.`, true)
             .addField('Estadísticas en Solo/Dúo:', rankedTxt(), true)
             .addField('Jugando ahora:', await livegameTxt())
-            .addField('Última partida:', `${gametxt=='No hay datos.'?gametxt:$eng}`)
+            .addField('Última partida:', `${gametxt=='No hay datos.'?'No hay datos.':$eng}`)
             .setFooter(`Solicitado por ${interaction.member.user.username}`,`https://cdn.discordapp.com/avatars/${interaction.member.user.id}/${interaction.member.user.avatar}`)
             .setTimestamp();
             return embed
