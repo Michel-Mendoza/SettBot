@@ -96,7 +96,7 @@ module.exports = {
                     ]
                     },{
                         name: 'keys',
-                        description: 'La cantidad de llaves que quieres (máximo 1000)',
+                        description: 'La cantidad de llaves que quieres (minimo 20, máximo 1000)',
                         type: 4,
                         required: true
                     }],
@@ -109,6 +109,7 @@ module.exports = {
         let keys_size = args[5].value
 
         if (keys_size >= 1000) keys_size = 1000
+        if (keys_size <= 20) keys_size = 20
 
         if (!interaction.member.id == '797254248387444769') return 'No estás autorizado.'
 
@@ -121,7 +122,7 @@ module.exports = {
 
         let key = 'RGAPI-e6b78cc5-6d96-437f-b640-67f7e8dd7777'
 
-        let api = new URL(`https://americas.api.riotgames.com/lol/tournament-stub/v4/codes?tournamentId=${t_id}`)
+        let api = new URL(`https://americas.api.riotgames.com/lol/tournament-stub/v4/codes?tournamentId=${t_id}&count=${keys_size}`)
         let data = await fetch(api, {headers: {'X-Riot-Token':key}, method: 'POST', body: JSON.stringify(tournament_config_body)})
         data = await data.json()
 
