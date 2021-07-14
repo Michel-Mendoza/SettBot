@@ -129,7 +129,7 @@ module.exports = {
         const Discord = require('discord.js')
         let embed = new Discord.MessageEmbed()
             .setColor('RED')
-            .setDescription('SettBot Torneos - Las claves del torneo han sido creadas.')
+            .setTitle('SettBot Torneos - Las claves del torneo han sido creadas.')
             .setDescription('Aquí tienes las claves:\n'+ JSON.stringify(data))
             .setTimestamp()
         return embed

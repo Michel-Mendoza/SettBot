@@ -34,7 +34,7 @@ module.exports = {
         const Discord = require('discord.js')
         let embed = new Discord.MessageEmbed()
             .setColor('RED')
-            .setDescription('SettBot Torneos')
+            .setTitle('SettBot Torneos')
             .setDescription('Has creado un torneo.\nID del torneo: '+ data)
             .setTimestamp()
         return embed
